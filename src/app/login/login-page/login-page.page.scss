@@ -1,0 +1,12 @@
+.login-content{
+    position: absolute;
+    width: 75%;
+    height: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    .login-text{
+        font-size: 30px;
+        color : #4F83EB;
+    }
+}
