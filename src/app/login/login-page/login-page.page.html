@@ -1,15 +1,37 @@
-<ion-content>
+<ion-content id="loginPage">
   <div class="login-content">
     <ion-grid>
       <ion-row>
         <ion-col size="10">
-          <ion-text class="login-text">Log Into</ion-text> 
+          <ion-text class="login-text">Log Into</ion-text>
+            <br>
           <ion-text class="login-text">Your Account</ion-text>
         </ion-col>
         <ion-col size="12">
-          
+          <form [formGroup]="loginForm">
+            <ion-item>
+              <ion-label position="floating">E-mail</ion-label>
+              <ion-input formControlName="email"  type="text" required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Password</ion-label>
+              <ion-input formControlName="password"  type="password" required></ion-input>
+            </ion-item>
+          </form>
         </ion-col>
     </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-checkbox color="primary"></ion-checkbox> <span> Remember Me?</span>
+      </ion-col>
+      <ion-col size="12">
+        <ion-button class="loginBtn" shape="round" color="primary">Login</ion-button>
+        <ion-button class="googleBtn" shape="round" color="light">Google</ion-button>
+      </ion-col>
+    </ion-row>
   </ion-grid>
+  <ion-toolbar text-center position="bottom">
+    <ion-text (click)="getStarted()">Create new Account?</ion-text>
+  </ion-toolbar>
   </div>
 </ion-content>
