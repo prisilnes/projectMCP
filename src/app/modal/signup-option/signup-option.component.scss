@@ -1,0 +1,23 @@
+
+#signUpmodal{
+    .modalTitle{
+        height: 10%;
+    }
+    .pictureCard{
+        border-radius: 50px;
+        padding: 15px 0 15px 0;
+    }
+    .lowerCard{
+        @extend .pictureCard;
+        margin: -50px 0 0 0;
+    }
+    .modalButton{
+        position: relative;
+        left: 50%;
+        top: -40px;
+        transform: translate(-50%, 0);
+        height: 50px;
+        font-size: 20px;
+        width: 90%;
+    }
+}

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-get-started',
@@ -9,15 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GetStartedComponent implements OnInit {
 
-
   slideOptions = {
     initialSlide: 0,
     speed: 500,
     slideShadows: true
   }
 
-  constructor() { }
+  constructor(
+    private modalCtrl : ModalController,
+  ) { }
 
   ngOnInit() {}
 
+  close(){
+    this.modalCtrl.dismiss();
+  }
 }

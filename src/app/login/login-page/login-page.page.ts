@@ -2,6 +2,7 @@ import { GetStartedComponent } from 'src/app/modal/get-started/get-started.compo
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
+import { SignupOptionComponent } from 'src/app/modal/signup-option/signup-option.component';
 
 @Component({
   selector: 'app-login-page',
@@ -27,8 +28,16 @@ export class LoginPagePage implements OnInit {
         validators: [Validators.required, Validators.minLength(8)], 
       })
     })
+    // this.getStarted();
   }
 
+
+  signUp(){
+    this.modalCtrl.create({ component: SignupOptionComponent })
+      .then(modal => {
+        modal.present();
+      })
+  }
 
   getStarted(){
     this.modalCtrl.create({ component: GetStartedComponent })

@@ -1,3 +1,4 @@
+import { SignupOptionComponent } from './../../modal/signup-option/signup-option.component';
 import { GetStartedComponent } from 'src/app/modal/get-started/get-started.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -23,7 +24,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [LoginPagePage, GetStartedComponent],
-  entryComponents: [GetStartedComponent]
+  declarations: [LoginPagePage, SignupOptionComponent, GetStartedComponent],
+  entryComponents: [SignupOptionComponent, GetStartedComponent]
 })
 export class LoginPagePageModule {}

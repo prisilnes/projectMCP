@@ -1,9 +1,47 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>userRegister</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
-</ion-content>
+<ion-content id="registerPage">
+          <ion-button class="backBtn" shape="round" color="light" [routerLink]="['/','login']">
+            <ion-icon name="arrow-round-back" color="primary"></ion-icon>
+          </ion-button>
+    <div class="register-content">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12">
+            <ion-text class="register-text">Sign Up as User</ion-text>
+          </ion-col>
+          <ion-col size="12">
+            <form [formGroup]="registerForm">
+              <ion-item>
+                <ion-label position="floating">First Name</ion-label>
+                <ion-input formControlName="firstName"  type="text" required></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Last Name</ion-label>
+                <ion-input formControlName="lastName"  type="text" required></ion-input>
+              </ion-item>
+              <ion-item>
+                  <ion-label position="floating">Email</ion-label>
+                  <ion-input formControlName="lastName"  type="text" required></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Password</ion-label>
+                    <ion-input formControlName="password"  type="text" required></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Confirm Password</ion-label>
+                    <ion-input formControlName="confirmPassword"  type="text" required></ion-input>
+                </ion-item>
+                <div class="TC">
+                  <ion-checkbox formControlName="TC" type="text" required></ion-checkbox>
+                  <ion-label class="TcText">  i Agree with T&C</ion-label>
+                </div>
+            </form>
+          </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-button class="signUpbtn" shape="round" color="primary">Sign Up</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    </div>
+  </ion-content>

@@ -1,4 +1,4 @@
-<ion-content id="loginPage">
+<ion-content id="loginPage" fullscreen>
   <div class="login-content">
     <ion-grid>
       <ion-row>
@@ -22,7 +22,10 @@
     </ion-row>
     <ion-row>
       <ion-col size="12">
-        <ion-checkbox color="primary"></ion-checkbox> <span> Remember Me?</span>
+        <div class="rememberMe">
+          <ion-checkbox color="primary"></ion-checkbox>
+          <ion-label class="rememberText"> Remember Me?</ion-label>
+        </div>
       </ion-col>
       <ion-col size="12">
         <ion-button class="loginBtn" shape="round" color="primary">Login</ion-button>
@@ -30,8 +33,8 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-toolbar text-center position="bottom">
-    <ion-text (click)="getStarted()">Create new Account?</ion-text>
-  </ion-toolbar>
+  <div class="ion-text-center create">
+    <ion-label (click)="signUp()">Create new Account?</ion-label>
+  </div>
   </div>
 </ion-content>
