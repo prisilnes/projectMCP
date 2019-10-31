@@ -1,0 +1,35 @@
+#profile{
+    .title{
+        font-size: 25px;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50px;
+        left: 50%;
+        color : #4F83EB;
+    }
+    .avatar{
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 30%;
+        left: 50%;
+        border-radius: 50%;
+        height: 150px;
+        width: 150px;
+        background: linear-gradient(210deg, #4f83eb, #acc8ff);
+    }
+    .personalInfo{
+        font-size: 18px;
+        color : #4F83EB;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+    }
+    .buttonBox{
+        position: absolute;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        top: 60%;
+        left: 50%;
+    }
+}

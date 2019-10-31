@@ -7,9 +7,8 @@ const routes: Routes = [
   { path: 'register/owner', loadChildren: './register/owner-register/owner-register.module#OwnerRegisterPageModule' },
   { path: 'register/user', loadChildren: './register/user-register/user-register.module#UserRegisterPageModule' },
   { path: 'explore', loadChildren: './shared-content/landing-page/landing-page.module#LandingPagePageModule' },
-  { path: 'detail-page', loadChildren: './shared-content/detail-page/detail-page.module#DetailPagePageModule' },
-  { path: 'profile-page', loadChildren: './shared-content/profile-page/profile-page.module#ProfilePagePageModule' },
-  { path: 'bookmark', loadChildren: './user-content/bookmark/bookmark.module#BookmarkPageModule' },
+  { path: 'explore/category', loadChildren: './shared-content/category/category.module#CategoryPageModule' },
+  { path: 'explore/search', loadChildren: './shared-content/search/search.module#SearchPageModule' },
 ];
 
 @NgModule({
@@ -20,4 +19,10 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 
-// { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
+// { path: 'detail-page', loadChildren: './shared-content/detail-page/detail-page.module#DetailPagePageModule' },
+// { path: 'profile-page', loadChildren: './shared-content/profile-page/profile-page.module#ProfilePagePageModule' },
+// { path: 'bookmark', loadChildren: './user-content/bookmark/bookmark.module#BookmarkPageModule' },
+// { path: 'home', loadChildren: './shared-content/landing-page/home/home.module#HomePageModule' },
+// { path: 'bookmark', loadChildren: './shared-content/landing-page/bookmark/bookmark.module#BookmarkPageModule' },
+// { path: 'detail', loadChildren: './shared-content/landing-page/detail/detail.module#DetailPageModule' },
+// { path: 'profile', loadChildren: './shared-content/landing-page/profile/profile.module#ProfilePageModule' },

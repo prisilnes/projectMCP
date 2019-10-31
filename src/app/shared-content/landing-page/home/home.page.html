@@ -1,0 +1,32 @@
+
+<ion-content id="landingPage" fullscreen>
+      <ion-button class="backBtn" [routerLink]="['/','explore','search']" shape="round" color="none">
+      </ion-button>
+      <ion-icon class="backIcon" name="search" color="primary"></ion-icon>
+      <div class="mainContent">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="4" class="categoryText">
+            Category
+          </ion-col>
+          <ion-col class="ion-text-right" size="4" offset="4">
+            <ion-text [routerLink]="['/','explore','category']" >See All (5)</ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col *ngFor="let data of data" size="4">
+            <ion-card class="categoryCard ion-text-center">
+              <ion-card-subtitle class="text">{{data.nama}}</ion-card-subtitle>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col *ngFor="let card of pantiAsuhan" size="6">
+            <ion-card class="pantiCard ion-text-center">
+              <ion-card-subtitle class="text">{{card.nama}}</ion-card-subtitle>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-content>

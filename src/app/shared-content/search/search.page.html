@@ -1,0 +1,22 @@
+<ion-content id="search">
+    <div class="title">
+      <ion-text>
+        <b>Search</b>
+      </ion-text>
+    </div>
+    <ion-button class="backBtn" shape="round" color="none" [routerLink]="['/','explore']">
+    </ion-button>
+    <ion-icon class="backIcon" name="arrow-round-back" color="primary"></ion-icon>
+    <ion-grid>
+        <ion-row>
+            <ion-col class="searchBox" shape="round" size="10">
+                    <div class="searchIcon">
+                        <ion-icon name="search"></ion-icon> 
+                    </div>
+                    <div class="searchInput">
+                        <ion-input placeholder="Search Disini" type="text"></ion-input>
+                    </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

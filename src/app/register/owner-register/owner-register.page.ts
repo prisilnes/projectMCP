@@ -71,14 +71,14 @@ export class OwnerRegisterPage implements OnInit {
     })
   }
 
-   nextSlide($event) {
-    this.slides.getActiveIndex().then(index => {
-      console.log(index);
-      console.log('currentIndex:', index);
-	  this.slides.slideNext();
-      // OR this.slides.slideTo(index + 1);
-    });
-  }
+  //  nextSlide($event) {
+  //   this.slides.getActiveIndex().then(index => {
+  //     console.log(index);
+  //     console.log('currentIndex:', index);
+	//   this.slides.slideNext();
+  //     // OR this.slides.slideTo(index + 1);
+  //   });
+  // }
 }
 
 

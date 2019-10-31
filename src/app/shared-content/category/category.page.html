@@ -1,0 +1,20 @@
+<ion-content id="category">
+    <div class="title">
+      <ion-text>
+        <b>Category</b>
+      </ion-text>
+    </div>
+    <ion-button class="backBtn" shape="round" color="none" [routerLink]="['/','explore']">
+    </ion-button>
+    <ion-icon class="backIcon" name="arrow-round-back" color="primary"></ion-icon>
+    <ion-button class="searchBtn"  shape="round" color="none" [routerLink]="['/','explore','search']">
+    </ion-button>
+    <ion-icon class="searchIcon" name="search" color="primary"></ion-icon>
+    <ion-grid class="innerContent">
+      <ion-row>
+        <ion-col *ngFor="let data of data" size="10" offset="1">
+          <ion-button class="button" expand="block" shape="round" color="primary">{{data.nama}}</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-content>
