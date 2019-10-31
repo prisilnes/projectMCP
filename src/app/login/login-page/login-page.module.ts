@@ -1,3 +1,4 @@
+import { TurnGpsComponent } from './../../modal/turn-gps/turn-gps.component';
 import { SignupOptionComponent } from './../../modal/signup-option/signup-option.component';
 import { GetStartedComponent } from 'src/app/modal/get-started/get-started.component';
 import { NgModule } from '@angular/core';
@@ -24,7 +25,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [LoginPagePage, SignupOptionComponent, GetStartedComponent],
-  entryComponents: [SignupOptionComponent, GetStartedComponent]
+  declarations: [LoginPagePage, SignupOptionComponent, GetStartedComponent, TurnGpsComponent],
+  entryComponents: [SignupOptionComponent, GetStartedComponent, TurnGpsComponent]
 })
 export class LoginPagePageModule {}

@@ -1,3 +1,4 @@
+import { TurnGpsComponent } from './../../modal/turn-gps/turn-gps.component';
 import { GetStartedComponent } from 'src/app/modal/get-started/get-started.component';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -28,7 +29,7 @@ export class LoginPagePage implements OnInit {
         validators: [Validators.required, Validators.minLength(8)], 
       })
     })
-    // this.getStarted();
+    this.getStarted();
   }
 
 
@@ -41,6 +42,13 @@ export class LoginPagePage implements OnInit {
 
   getStarted(){
     this.modalCtrl.create({ component: GetStartedComponent })
+      .then(modal => {
+        modal.present();
+      })
+  }
+
+  login(){
+    this.modalCtrl.create({ component : TurnGpsComponent})
       .then(modal => {
         modal.present();
       })
