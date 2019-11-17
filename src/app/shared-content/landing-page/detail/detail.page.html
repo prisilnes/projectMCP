@@ -1,9 +1,22 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>detail</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content>
+<ion-content fullscreen id="detailSection">
+    <ion-icon [routerLink]="['/','explore']" class="backIcon" name="arrow-round-back" color="dark"></ion-icon>
+    <ion-icon class="bookmarkIcon" name="bookmark" color="dark"></ion-icon>
+    <div *ngIf="detailClass == 'detailCardActive'"class="upperTitle ion-text-center">
+      <h1>Nama Panti</h1>
+    </div>
+  <div class="upperCard"> 
+  </div>
+  <div class="titleCard ion-text-center">
+    <h1 class="title">Nama Panti</h1>
+  </div>
+  <div class="summary">
 
+  </div>
+  <div (click)="appear()" class="{{detailClass}} ion-text-center">
+    <h1 class="detailContentTitle"> Detail Information</h1>
+    <div class="detailContent">
+
+    </div>
+  </div>
 </ion-content>

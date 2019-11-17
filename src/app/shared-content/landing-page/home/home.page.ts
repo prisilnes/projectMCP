@@ -1,5 +1,6 @@
 import { dummy } from './../../../model/data';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit {
 
-  data : dummy[] = [{
+  data: dummy[] = [{
     nama : 'Panti Asuhan',
   },
   {
@@ -15,10 +16,9 @@ export class HomePage implements OnInit {
   },
   {
     nama : 'Panti Tuna Netra',
-  }
-  ]
+  }];
 
-  pantiAsuhan : dummy[] = [{
+  pantiAsuhan: dummy[] = [{
     nama : 'Panti A'
   },
   {
@@ -38,9 +38,14 @@ export class HomePage implements OnInit {
   },
   ]
 
-  constructor() { }
+  constructor(
+    private route: Router,
+  ) { }
 
   ngOnInit() {
   }
 
+  move(){
+    this.route.navigate(['/', 'explore', 'tabs', 'detail']);
+  }
 }
