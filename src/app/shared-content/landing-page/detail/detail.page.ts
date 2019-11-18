@@ -9,7 +9,20 @@ export class DetailPage implements OnInit {
 
   constructor() { }
 
+  detailClass: string;
   ngOnInit() {
+
+  }
+  ionViewWillEnter(){
+    this.detailClass = 'detailCard';
+  }
+
+  appear(){
+    if(this.detailClass === 'detailCard'){
+      this.detailClass = 'detailCardActive';
+    } else {
+      this.detailClass = 'detailCard';
+    }
   }
 
 }
