@@ -28,26 +28,25 @@ export class LoginPagePage implements OnInit {
         updateOn: 'change',
         validators: [Validators.required, Validators.minLength(8)], 
       })
-    })
+    });
     this.getStarted();
   }
-
 
   signUp(){
     this.modalCtrl.create({ component: SignupOptionComponent })
       .then(modal => {
         modal.present();
-      })
+      });
   }
 
-  getStarted(){
+  getStarted() {
     this.modalCtrl.create({ component: GetStartedComponent })
       .then(modal => {
         modal.present();
-      })
+      });
   }
 
-  login(){
+  login() {
     this.modalCtrl.create({ component : TurnGpsComponent})
       .then(modal => {
         modal.present();

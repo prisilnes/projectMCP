@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { EditProfileComponent } from 'src/app/modal/edit-profile/edit-profile.component';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilePage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private modalCtrl: ModalController,
+    ) { }
 
   ngOnInit() {
+  }
+
+  openModal() {
+    this.modalCtrl.create({ component : EditProfileComponent})
+    .then(modal => {
+      modal.present();
+    });
   }
 
 }

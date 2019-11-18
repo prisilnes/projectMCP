@@ -34,7 +34,8 @@ const routes: Routes = [
       path:'',
       redirectTo:'/explore/tabs/home',
       pathMatch:'full'
-    }
+    },
+  { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' }
   ];
 
 @NgModule({

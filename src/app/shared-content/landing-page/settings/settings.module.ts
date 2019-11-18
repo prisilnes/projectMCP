@@ -2,16 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-import { EditProfileComponent } from 'src/app/modal/edit-profile/edit-profile.component';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ProfilePage } from './profile.page';
+import { SettingsPage } from './settings.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ProfilePage
+    component: SettingsPage
   }
 ];
 
@@ -22,7 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ProfilePage, EditProfileComponent],
-  entryComponents: [EditProfileComponent]
+  declarations: [SettingsPage]
 })
-export class ProfilePageModule {}
+export class SettingsPageModule {}
