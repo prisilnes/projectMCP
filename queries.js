@@ -20,6 +20,18 @@ const panti = (request, response) => {
   );
 };
 
+const panti_owner = (request, response) => {
+  pool.query(
+    "SELECT * FROM tbl_panti INNER JOIN tbl_owner ON tbl_panti.owner_kode  = tbl_owner.owner_kode",
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      response.status(200).json(results.rows);
+    }
+  );
+};
+
 const panti_asuhan = (request, response) => {
   // let kategori = request.body.kategori;
   pool.query(
@@ -81,6 +93,7 @@ const users = (request, response) => {
 
 module.exports = {
   panti,
+  panti_owner,
   panti_asuhan,
   panti_jompo,
   users
