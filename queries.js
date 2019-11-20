@@ -46,7 +46,7 @@ const kategori_panti = (request, response) => {
   );
 };
 
-const new_user = (request, response) => {
+const regis_user = (request, response) => {
   const email = request.body.email;
   const password = request.body.password;
   const first_name = request.body.first_name;
@@ -69,7 +69,7 @@ const new_user = (request, response) => {
   );
 };
 
-const new_owner = (request, response) => {
+const regis_owner = (request, response) => {
   const email = request.body.email;
   const password = request.body.password;
   const first_name = request.body.first_name;
@@ -171,8 +171,8 @@ module.exports = {
   panti_owner,
   kategori_panti,
   login_user,
-  new_user,
-  new_owner,
+  regis_user,
+  regis_owner,
   login_owner,
   detail_panti
 };
