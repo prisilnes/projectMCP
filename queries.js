@@ -77,7 +77,6 @@ const new_owner = (request, response) => {
   const alamat = request.body.alamat;
   const telepon = request.body.telepon;
 
-
   pool.query(
     "INSERT INTO tbl_owner (owner_alamat, owner_telepon, owner_firstname, owner_lastname, owner_email, owner_password) VALUES ($1,$2,$3,$4,$5,$6)",
     [alamat, telepon, first_name, last_name, email, password],
@@ -94,7 +93,6 @@ const new_owner = (request, response) => {
     }
   );
 };
-
 
 const login_user = (request, response) => {
   const email = request.body.email;
@@ -154,6 +152,20 @@ const login_owner = (request, response) => {
   }
 };
 
+const detail_panti = (request, response) => {
+  const id = request.params.id;
+  pool.query(
+    " SELECT * FROM tbl_panti AS panti INNER JOIN tbl_gambar AS gambar ON gambar.gambar_id = panti.gambar_id INNER JOIN tbl_location AS loc ON loc.id_location = panti.id_location WHERE panti_id = $1;",
+    [id],
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      response.status(200).json(results.rows);
+    }
+  );
+};
+
 module.exports = {
   panti,
   panti_owner,
@@ -161,7 +173,8 @@ module.exports = {
   login_user,
   new_user,
   new_owner,
-  login_owner
+  login_owner,
+  detail_panti
 };
 
 //post tapi bodynya banyak
