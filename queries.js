@@ -8,7 +8,7 @@ const pool = new Pool({
   ssl: true
 });
 
-const users = (request, response) => {
+const panti = (request, response) => {
   pool.query("SELECT * FROM tbl_panti", (error, results) => {
     if (error) {
       throw error;
@@ -19,12 +19,13 @@ const users = (request, response) => {
 
 // const users = (request, response) => {
 //   var id = request.body.id; //post
+// var nama = request.body.nama ;
 //   //post tapi bodynya banyak
 //   // var {param1, param2} = request.body
 //   //get
 //   //const _param = request.params.id
 
-//   pool.query("SELECT * FROM tbl_panti WHERE id_panti = $1", [id], (error, results) => {
+//   pool.query("SELECT * FROM tbl_panti WHERE id_panti = $1", [id],[nama], (error, results) => {
 //     if (error) {
 //       throw error;
 //     }
@@ -33,5 +34,5 @@ const users = (request, response) => {
 // };
 
 module.exports = {
-  users
+  panti
 };

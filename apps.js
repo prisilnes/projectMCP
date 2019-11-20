@@ -22,7 +22,7 @@ app.use(
   })
 );
 
-app.get("/users", query.users);
+app.get("/panti", query.panti);
 //get dengan parameter
 //app.get("/users/:id", query.xx);
 //app.post("/users", query.xx);
