@@ -69,6 +69,33 @@ const new_user = (request, response) => {
   );
 };
 
+const new_owner = (request, response) => {
+  const email = request.body.email;
+  const password = request.body.password;
+  const first_name = request.body.first_name;
+  const last_name = request.body.last_name;
+  const alamat = request.body.alamat;
+  const telepon = request.body.telepon;
+
+
+  pool.query(
+    "INSERT INTO tbl_owner (owner_alamat, owner_telepon, owner_firstname, owner_lastname, owner_email, owner_password) VALUES ($1,$2,$3,$4,$5,$6)",
+    [alamat, telepon, first_name, last_name, email, password],
+    (error, results) => {
+      console.log(results.rows);
+      if (error) {
+        throw error;
+      } else {
+        return response.status(200).send({
+          success: true,
+          signup: true
+        });
+      }
+    }
+  );
+};
+
+
 const login_user = (request, response) => {
   const email = request.body.email;
   const password = request.body.password;
@@ -98,12 +125,43 @@ const login_user = (request, response) => {
   }
 };
 
+const login_owner = (request, response) => {
+  const email = request.body.email;
+  const password = request.body.password;
+  console.log("ini email", request.body.email);
+
+  if (!email || !password) {
+    return response.status(200).json({
+      success: false,
+      auth: false,
+      massage: "Please fill all required fields!"
+    });
+  } else if (email.length > 0 && password.length > 0) {
+    pool.query(
+      "SELECT * FROM tbl_owner WHERE owner_email = $1",
+      [email],
+      (error, results) => {
+        console.log(results.rows);
+        if (error) {
+          throw error;
+        }
+        return response.status(200).send({
+          success: true,
+          login: true
+        });
+      }
+    );
+  }
+};
+
 module.exports = {
   panti,
   panti_owner,
   kategori_panti,
   login_user,
-  new_user
+  new_user,
+  new_owner,
+  login_owner
 };
 
 //post tapi bodynya banyak
