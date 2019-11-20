@@ -25,8 +25,8 @@ app.use(
 app.get("/panti", query.panti);
 app.get("/panti_owner", query.panti_owner);
 app.get("/panti/:id", query.kategori_panti);
-app.post("/users", query.users);
 app.post("/login_user", query.login_user);
+app.post("/new_user", query.new_user);
 //get dengan parameter
 //app.get("/users/:id", query.xx);
 //app.post("/users", query.xx);

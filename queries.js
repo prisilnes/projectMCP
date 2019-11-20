@@ -46,91 +46,79 @@ const kategori_panti = (request, response) => {
   );
 };
 
-const users = (request, response) => {
-  var email = request.body.email;
-  var password = request.body.password; //post
-
-  //post tapi bodynya banyak
-  // var {param1, param2} = request.body
-  //get
-  //const _param = request.params.id
-
-  pool.query(
-    "SELECT * FROM tbl_user WHERE user_email = $1 AND user_password = $1",
-    [email],
-    [password],
-    (error, results) => {
-      if (error) {
-        throw error;
-      }
-      response.status(200).json(results.rows);
-    }
-  );
-};
-
 const new_user = (request, response) => {
-  var first_name = request.body.id; //post
-  var nama = request.body.nama;
-  //post tapi bodynya banyak
-  // var {param1, param2} = request.body
-  //get
-  //const _param = request.params.id
+  const email = request.body.email;
+  const password = request.body.password;
+  const first_name = request.body.first_name;
+  const last_name = request.body.last_name;
 
   pool.query(
-    "SELECT * FROM tbl_panti WHERE id_panti = $1",
-    [id],
-    [nama],
+    "INSERT INTO tbl_user (user_first_name, user_last_name, user_email,user_password) VALUES ($1,$2,$3,$4)",
+    [first_name, last_name, email, password],
     (error, results) => {
+      console.log(results.rows);
       if (error) {
         throw error;
+      } else {
+        return response.status(200).send({
+          success: true,
+          signup: true
+        });
       }
-      response.status(200).json(results.rows);
     }
   );
 };
 
-const login_user = (request, response) =>{
-  const email = request.body.user_email;
-  var password = request.body.user_password;
+const login_user = (request, response) => {
+  const email = request.body.email;
+  const password = request.body.password;
+  console.log("ini email", request.body.email);
 
-  if(!email || !password)
-  {
+  if (!email || !password) {
     return response.status(200).json({
-      "success": false,
-      "auth": false,
-      "massage" : "Please fill all required fields!"
+      success: false,
+      auth: false,
+      massage: "Please fill all required fields!"
     });
-  }
-  else if (email.length > 0 && password.length > 0 && email != undefined && password != undefined){
-    pool.query('SELECT * FROM user WHERE user_email = $1',[email],(error, response) =>{
-      if(error){
-        throw error;
+  } else if (email.length > 0 && password.length > 0) {
+    pool.query(
+      "SELECT * FROM tbl_user WHERE user_email = $1",
+      [email],
+      (error, results) => {
+        console.log(results.rows);
+        if (error) {
+          throw error;
+        }
+        return response.status(200).send({
+          success: true,
+          login: true
+        });
       }
-      response.status(200).json(results.rows);
-    })
+    );
   }
 };
-
-// const users = (request, response) => {
-//   var id = request.body.id; //post
-// var nama = request.body.nama ;
-//   //post tapi bodynya banyak
-//   // var {param1, param2} = request.body
-//   //get
-//   //const _param = request.params.id
-
-//   pool.query("SELECT * FROM tbl_panti WHERE id_panti = $1", [id],[nama], (error, results) => {
-//     if (error) {
-//       throw error;
-//     }
-//     response.status(200).json(results.rows);
-//   });
-// };
 
 module.exports = {
   panti,
   panti_owner,
   kategori_panti,
-  users,
-  login_user
+  login_user,
+  new_user
 };
+
+//post tapi bodynya banyak
+// var {param1, param2} = request.body
+//get
+//const _param = request.params.id
+
+// pool.query(
+//   "SELECT * FROM tbl_panti WHERE id_panti = $1",
+//   [id],
+//   [nama],
+//   (error, results) => {
+//     if (error) {
+//       throw error;
+//     }
+//     response.status(200).json(results.rows);
+//   }
+// );
