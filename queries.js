@@ -32,23 +32,11 @@ const panti_owner = (request, response) => {
   );
 };
 
-const panti_asuhan = (request, response) => {
-  // let kategori = request.body.kategori;
+const kategori_panti = (request, response) => {
+  const id = request.params.id;
   pool.query(
-    "SELECT * FROM tbl_panti WHERE kategori_panti = 'panti-asuhan'",
-    (error, results) => {
-      if (error) {
-        throw error;
-      }
-      response.status(200).json(results.rows);
-    }
-  );
-};
-
-const panti_jompo = (request, response) => {
-  // let kategori = request.body.kategori;
-  pool.query(
-    "SELECT * FROM tbl_panti WHERE kategori_panti = 'panti-jompo'",
+    "SELECT * FROM tbl_panti WHERE kategori_panti = $1",
+    [id],
     (error, results) => {
       if (error) {
         throw error;
@@ -67,12 +55,38 @@ const users = (request, response) => {
   //get
   //const _param = request.params.id
 
-  pool.query("SELECT * FROM tbl_user WHERE user_email = $1 AND user_password = $1", [email],[password], (error, results) => {
-    if (error) {
-      throw error;
+  pool.query(
+    "SELECT * FROM tbl_user WHERE user_email = $1 AND user_password = $1",
+    [email],
+    [password],
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      response.status(200).json(results.rows);
     }
-    response.status(200).json(results.rows);
-  });
+  );
+};
+
+const new_user = (request, response) => {
+  var first_name = request.body.id; //post
+  var nama = request.body.nama;
+  //post tapi bodynya banyak
+  // var {param1, param2} = request.body
+  //get
+  //const _param = request.params.id
+
+  pool.query(
+    "SELECT * FROM tbl_panti WHERE id_panti = $1",
+    [id],
+    [nama],
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      response.status(200).json(results.rows);
+    }
+  );
 };
 
 // const users = (request, response) => {
@@ -94,7 +108,6 @@ const users = (request, response) => {
 module.exports = {
   panti,
   panti_owner,
-  panti_asuhan,
-  panti_jompo,
+  kategori_panti,
   users
 };
