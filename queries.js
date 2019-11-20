@@ -89,6 +89,28 @@ const new_user = (request, response) => {
   );
 };
 
+const login_user = (request, response) =>{
+  const email = request.body.user_email;
+  var password = request.body.user_password;
+
+  if(!email || !password)
+  {
+    return response.status(200).json({
+      "success": false,
+      "auth": false,
+      "massage" : "Please fill all required fields!"
+    });
+  }
+  else if (email.length > 0 && password.length > 0 && email != undefined && password != undefined){
+    pool.query('SELECT * FROM user WHERE user_email = $1',[email],(error, response) =>{
+      if(error){
+        throw error;
+      }
+      response.status(200).json(results.rows);
+    })
+  }
+};
+
 // const users = (request, response) => {
 //   var id = request.body.id; //post
 // var nama = request.body.nama ;
@@ -109,5 +131,6 @@ module.exports = {
   panti,
   panti_owner,
   kategori_panti,
-  users
+  users,
+  login_user
 };
