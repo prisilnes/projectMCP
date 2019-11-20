@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { UserRegisterPage } from './user-register.page';
+import { TermsConditionsComponent } from 'src/app/modal/terms-conditions/terms-conditions.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [UserRegisterPage]
+  declarations: [UserRegisterPage],
+  entryComponents: [],
 })
 export class UserRegisterPageModule {}

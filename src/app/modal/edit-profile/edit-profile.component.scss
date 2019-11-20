@@ -1,0 +1,54 @@
+#profile{
+    .backIcon{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);;
+        top: 44px;
+        left: 52px;
+    }
+    .title{
+        font-size: 25px;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50px;
+        left: 50%;
+        color : #4F83EB;
+    }
+    .avatar{
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 30%;
+        left: 50%;
+        border-radius: 50%;
+        height: 150px;
+        width: 150px;
+        background: linear-gradient(210deg, #4f83eb, #acc8ff);
+    }
+    .imageButton{
+        z-index: 10;
+        height: 25px;
+        width: 5px;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 37%;
+        left: 60%;
+    }
+    .personalInfo {
+        font-size: 18px;
+        color : #4F83EB;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 55%;
+        left: 50%;
+        .inputBox {
+            width: 250px;
+            height: 50px;
+            border: black solid 1px;
+            border-radius: 25px;
+            margin: 0 0 15px 0;
+            padding: 0 0 0 20px;
+        }
+    }
+}
