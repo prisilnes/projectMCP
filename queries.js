@@ -9,12 +9,41 @@ const pool = new Pool({
 });
 
 const panti = (request, response) => {
-  pool.query("SELECT * FROM tbl_panti", (error, results) => {
-    if (error) {
-      throw error;
+  pool.query(
+    "SELECT * FROM tbl_panti INNER JOIN tbl_gambar ON tbl_panti.gambar_id= tbl_gambar.gambar_id",
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      response.status(200).json(results.rows);
     }
-    response.status(200).json(results.rows);
-  });
+  );
+};
+
+const panti_asuhan = (request, response) => {
+  // let kategori = request.body.kategori;
+  pool.query(
+    "SELECT * FROM tbl_panti WHERE kategori_panti = 'panti-asuhan'",
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      response.status(200).json(results.rows);
+    }
+  );
+};
+
+const panti_jompo = (request, response) => {
+  // let kategori = request.body.kategori;
+  pool.query(
+    "SELECT * FROM tbl_panti WHERE kategori_panti = 'panti-jompo'",
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      response.status(200).json(results.rows);
+    }
+  );
 };
 
 // const users = (request, response) => {
@@ -34,5 +63,7 @@ const panti = (request, response) => {
 // };
 
 module.exports = {
-  panti
+  panti,
+  panti_asuhan,
+  panti_jompo
 };
