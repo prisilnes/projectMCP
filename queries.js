@@ -46,6 +46,23 @@ const panti_jompo = (request, response) => {
   );
 };
 
+const users = (request, response) => {
+  var email = request.body.email;
+  var password = request.body.password; //post
+
+  //post tapi bodynya banyak
+  // var {param1, param2} = request.body
+  //get
+  //const _param = request.params.id
+
+  pool.query("SELECT * FROM tbl_user WHERE user_email = $1 AND user_password = $1", [email],[password], (error, results) => {
+    if (error) {
+      throw error;
+    }
+    response.status(200).json(results.rows);
+  });
+};
+
 // const users = (request, response) => {
 //   var id = request.body.id; //post
 // var nama = request.body.nama ;
@@ -65,5 +82,6 @@ const panti_jompo = (request, response) => {
 module.exports = {
   panti,
   panti_asuhan,
-  panti_jompo
+  panti_jompo,
+  users
 };
