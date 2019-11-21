@@ -60,7 +60,7 @@
             left: 50%;
             max-height: 100%;
             max-width: 100%;
-            object-fit: fill;
+            overflow: hidden;
         }
         .cardTitle{
             position: absolute;
