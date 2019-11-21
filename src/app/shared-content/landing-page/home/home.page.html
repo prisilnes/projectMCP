@@ -14,16 +14,19 @@
           </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col *ngFor="let data of data" size="4">
-            <ion-card class="categoryCard ion-text-center">
-              <ion-card-subtitle class="text">{{data.nama}}</ion-card-subtitle>
+          <ion-col *ngFor="let data of kategori" size="4">
+            <ion-card (click)="cariKategori(data.nama)"class="categoryCard ion-text-center">
+              <ion-card-subtitle class="text">{{data.nama | titlecase}}</ion-card-subtitle>
             </ion-card>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col *ngFor="let card of pantiAsuhan" size="6">
             <ion-card class="pantiCard ion-text-center" (click)="move(card.panti_id)">
-              <ion-card-subtitle class="text">{{card.panti_nama}}</ion-card-subtitle>
+              <ion-img class="image" [src]="card.gambar_filepath"></ion-img>
+              <div class="cardTitle">
+                <h3 class="text">{{card.panti_nama}}</h3>
+              </div>
             </ion-card>
           </ion-col>
         </ion-row>

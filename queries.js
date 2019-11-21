@@ -102,7 +102,7 @@ const login_user = (request, response) => {
   if (!email || !password) {
     return response.status(200).json({
       success: false,
-      auth: false,
+      login: false,
       massage: "Please fill all required fields!"
     });
   } else if (email.length > 0 && password.length > 0) {

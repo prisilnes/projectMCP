@@ -91,7 +91,7 @@
                     <ion-button class="uploadSurat" expand="block" shape="round" color="medium" >Upload Documents</ion-button>
                   </ion-col>
                   <ion-col size="12">
-                    <ion-button class="uploadSurat" expand="block" shape="round" color="primary" [routerLink]="['/','login']" >Register</ion-button>
+                    <ion-button (click)="registerOwner()"class="uploadSurat" expand="block" shape="round" color="primary" [routerLink]="['/','login']" >Register</ion-button>
                   </ion-col>
                 </ion-row>
               </ion-grid>

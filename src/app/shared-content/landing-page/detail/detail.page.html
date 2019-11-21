@@ -1,15 +1,23 @@
 <ion-content fullscreen id="detailSection" *ngIf="detailData">
-    <ion-icon [routerLink]="['/','explore']" class="backIcon" name="arrow-round-back" color="dark"></ion-icon>
-    <ion-icon class="bookmarkIcon" name="bookmark" color="dark"></ion-icon>
+  <ion-icon [routerLink]="['/','explore']" class="backIcon" name="arrow-round-back" color="light"></ion-icon>
+  <ion-button class="backBtn" shape="round" color="none">
+  </ion-button>
+  <ion-button class="bookmarkBtn" shape="round" color="none" [routerLink]="['/','explore']">
+  </ion-button>
+  <ion-icon class="bookmarkIcon" name="bookmark" color="light"></ion-icon>
+      <ion-card *ngIf="detailData" class="upperCard">
+        <ion-img class="image" [src]="detailData[0].gambar_filepath"></ion-img>
+      </ion-card>
     <!-- <div *ngIf="detailClass == 'detailCardActive'"class="upperTitle ion-text-center">
       <h1>Nama Panti</h1>
     </div> -->
-    <ion-img class="upperCard" src="detailData[0].gambar_filepath"></ion-img>
+
   <div class="{{titleClass}} ion-text-center">
-    <h1>{{detailData[0].panti_nama}}</h1>
+    <span class="text">{{detailData[0].panti_nama}}</span>
   </div>
   <div class="summary">
-
+    <h4>Perkenalan Panti :</h4>
+    <h3>{{detailData[0].summary}}</h3>
   </div>
   
   <div  class="{{detailClass}} ion-text-center">
@@ -18,9 +26,38 @@
     </div>
     <h1 class="detailContentTitle">Detail Information</h1>
     <div class="detailContent">
-      <agm-map [latitude]="lat" [longitude]="lon">
-          
+      <agm-map [latitude]="lat" [longitude]="lon" >
+        <agm-marker [latitude]="lat" [longitude]="lon"></agm-marker> 
       </agm-map>
+      <ion-list>
+          <ion-item color="light">
+            Kota
+          </ion-item>
+          <ion-item  class="item">
+              {{detailData[0].location_city}}
+          </ion-item>
+          <ion-item color="light">
+            Alamat
+          </ion-item>
+          <ion-item class="item">
+              {{detailData[0].location_nama}}
+          </ion-item>
+          <ion-item color="light">
+            Kontak Panti
+          </ion-item>
+          <ion-item class="item">
+              {{detailData[0].kontak_panti}}
+          </ion-item>
+          <ion-item color="light">
+              Jumlah Penghuni
+            </ion-item>
+            <ion-item class="item">
+              {{detailData[0].jumlah_penghuni}}
+            </ion-item>
+            <ion-item class="item">
+              --
+              </ion-item>
+        </ion-list>
     </div>
   </div>
 </ion-content>

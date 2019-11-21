@@ -17,14 +17,14 @@ export class HomePage implements OnInit {
     private fetchSvc: FetchDataService
   ) { }
 
-  data: dummy[] = [{
-    nama: 'Panti Asuhan'
+  kategori: dummy[] = [{
+    nama: 'panti-asuhan'
   },
   {
-    nama: 'Panti Jompo'
+    nama: 'panti-jompo'
   },
   {
-    nama: 'Panti Tuna Rungu'
+    nama: 'panti-tunarungu'
   }
   ];
 
@@ -36,6 +36,15 @@ export class HomePage implements OnInit {
     })
   }
 
+  cariKategori(slug){
+    this.fetchSvc.getPantiCategory(slug).subscribe(data => {
+      this.pantiAsuhan = data;
+    })
+  }
+
+  categoryPanti(){
+
+  }
   move(slug){
     this.route.navigate(['/', 'explore', 'tabs', slug]);
   }

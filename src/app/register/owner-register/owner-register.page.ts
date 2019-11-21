@@ -1,3 +1,6 @@
+import { Router } from '@angular/router';
+import { LoginRegisterService } from 'src/app/service/login-register.service';
+import { newOwner } from './../../model/data';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
@@ -15,8 +18,11 @@ export class OwnerRegisterPage implements OnInit {
     slideShadows: true
   }
 
-
-  constructor() { }
+  userData : newOwner;
+  constructor(
+    private regisSvc: LoginRegisterService,
+    private route : Router
+  ) { }
   registerForm: FormGroup
   ngOnInit() {
     this.registerForm = new FormGroup({
@@ -71,6 +77,21 @@ export class OwnerRegisterPage implements OnInit {
     })
   }
 
+
+  registerOwner(){
+    this.userData = {
+      first_name: this.registerForm.value.first_name,
+      last_name: this.registerForm.value.last_name,
+      email: this.registerForm.value.email,
+      password: this.registerForm.value.password,
+      telepon: this.registerForm.value.noTelp,
+    }
+    this.regisSvc.registerUser(this.userData).subscribe((data: any) => {
+      if (data.success === true){
+        this.route.navigate(['/','login']);
+      } 
+    })
+  }
   //  nextSlide($event) {
   //   this.slides.getActiveIndex().then(index => {
   //     console.log(index);

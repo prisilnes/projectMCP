@@ -7,10 +7,12 @@ export interface dummy{
 export interface Panti{
     panti_id: number;
     panti_nama: string;
+    kontak_panti: string;
     jumlah_penghuni: number;
     kategori_panti: string;
     id_location: number;
     gambar_id: number;
+    gambar_filepath: string;
     owner_kode: number;
     isboookmarked: boolean;
     summary: string;
@@ -62,8 +64,8 @@ export interface DetailPanti{
     summary: string;
     gambar_filepath: string;
     location_nama: string;
-    location_lat: number;
-    location_long: number;
+    location_lat: string;
+    location_long: string;
     location_city: string;
     location_state: string;
     location_postal_code: string;
@@ -71,4 +73,30 @@ export interface DetailPanti{
 
 export interface response{
 
+}
+
+export interface User{
+    email: string;
+    password: string;
+}
+
+export interface newOwner{
+    first_name: string;
+    last_name: string;
+    email: string;
+    password: string;
+    telepon: string;
+}
+
+export interface newUser{
+    email: string;
+    password: string;
+    first_name: string;
+    last_name: string;
+}
+
+export interface Bookmarked{
+    panti_id: string;
+    nama_panti: string;
+    kontak_panti;
 }

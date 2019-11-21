@@ -20,6 +20,8 @@ export class DetailPage implements OnInit {
   titleClass: string;
   lat : number;
   lon : number;
+  tempLat: string;
+  tempLon: string;
   ngOnInit() {
 
   }
@@ -31,8 +33,12 @@ export class DetailPage implements OnInit {
       this.fetchSvc.getDetailPanti(this.slug)
       .subscribe(data => {
         this.detailData = data;
-        this.lat = this.detailData[0].location_lat;
-        this.lon = this.detailData[0].location_long;
+        this.tempLat = data[0].location_lat;
+        this.tempLon = data[0].location_long;
+        console.log(this.tempLat, this.tempLon);
+        this.lat = +this.tempLat;
+        this.lon = +this.tempLon;
+        console.log(data);
       })
     })
   }

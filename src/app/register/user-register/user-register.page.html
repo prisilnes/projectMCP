@@ -24,11 +24,11 @@
                 </ion-item>
                 <ion-item>
                     <ion-label position="floating">Password</ion-label>
-                    <ion-input formControlName="password"  type="text" required></ion-input>
+                    <ion-input formControlName="password"  type="password" required></ion-input>
                 </ion-item>
                 <ion-item>
                     <ion-label position="floating">Confirm Password</ion-label>
-                    <ion-input formControlName="confirmPassword"  type="text" required></ion-input>
+                    <ion-input formControlName="confirmPassword"  type="password" required></ion-input>
                 </ion-item>
                 <div class="TC">
                   <ion-checkbox formControlName="TC" type="text" required></ion-checkbox>
@@ -39,7 +39,7 @@
       </ion-row>
       <ion-row>
         <ion-col size="12">
-          <ion-button class="signUpbtn" shape="round" color="primary">Sign Up</ion-button>
+          <ion-button class="signUpbtn" (click)="registerUser()"shape="round" color="primary">Sign Up</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>

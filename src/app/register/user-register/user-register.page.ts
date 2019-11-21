@@ -1,7 +1,10 @@
+import { LoginRegisterService } from 'src/app/service/login-register.service';
+import { newUser } from './../../model/data';
 import { ModalController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TermsConditionsComponent } from 'src/app/modal/terms-conditions/terms-conditions.component';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-user-register',
   templateUrl: './user-register.page.html',
@@ -9,8 +12,11 @@ import { TermsConditionsComponent } from 'src/app/modal/terms-conditions/terms-c
 })
 export class UserRegisterPage implements OnInit {
 
+  userData : newUser;
   constructor(
     private modalCtrl: ModalController,
+    private regisSvc: LoginRegisterService,
+    private route: Router,
   ) { }
   registerForm : FormGroup;
   ngOnInit() {
@@ -39,6 +45,20 @@ export class UserRegisterPage implements OnInit {
         updateOn : 'change',
         validators: [Validators.required],
       }),
+    })
+  }
+
+  registerUser(){
+    this.userData = {
+      email: this.registerForm.value.email,
+      first_name: this.registerForm.value.first_name,
+      last_name: this.registerForm.value.last_name,
+      password: this.registerForm.value.password,
+    }
+    this.regisSvc.registerUser(this.userData).subscribe((data: any) => {
+      if (data.success === true){
+        this.route.navigate(['/','login']);
+      } 
     })
   }
 

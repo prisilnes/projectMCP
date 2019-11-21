@@ -9,8 +9,9 @@ import { map } from 'rxjs/operators';
 })
 export class FetchDataService {
 
-  allPantiUrl = 'http://localhost:3000/panti';
+  allPantiUrl = 'http://localhost:3000/panti/';
   detailPantilUrl = 'http://localhost:3000/detail_panti/';
+  bookmarkUrl = 'http://localhost:3000/bookmarked_panti';
   homePanti = new BehaviorSubject<Panti[]>([]);
   extractData(res) {
     return res;
@@ -40,6 +41,17 @@ export class FetchDataService {
       })
     };
     return this.http.get(this.detailPantilUrl + slug, httpOptions)
+    .pipe(
+      map(this.extractData)
+    );
+  }
+
+  getPantiCategory(slug): Observable<Panti[]> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+      })
+    };
+    return this.http.get(this.allPantiUrl + slug, httpOptions)
     .pipe(
       map(this.extractData)
     );
