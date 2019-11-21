@@ -168,6 +168,19 @@ const detail_panti = (request, response) => {
   );
 };
 
+const bookmarked_panti = (request,response) =>{
+  const id = request.params.id;
+  pool.query(
+    "select panti_id, panti_nama, kontak_panti from tbl_panti where isbookmarked=$1", [id],
+    (error,result) => {
+      if(error){
+        throw error;
+      }
+      response.status(200).json(results.rows);
+    }
+  );
+};
+
 module.exports = {
   panti,
   panti_owner,
@@ -176,7 +189,8 @@ module.exports = {
   new_user,
   new_owner,
   login_owner,
-  detail_panti
+  detail_panti,
+  bookmarked_panti
 };
 
 //post tapi bodynya banyak
