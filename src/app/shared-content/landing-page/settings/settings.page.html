@@ -1,9 +1,33 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>settings</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content id="settings">
+    <div class="title">
+        <ion-text>
+          <b>Settings</b>
+        </ion-text>
+      </div>
+    <ion-button class="backBtn" shape="round" color="none" [routerLink]="['/','explore','tabs','profile']">
+    </ion-button>
+    <ion-icon class="backIcon" name="arrow-round-back" color="primary"></ion-icon>
 
-<ion-content>
-
+    <div class="list">
+      <ion-list>
+        <ion-item color="light">
+          Account
+        </ion-item>
+        <ion-item (click)="openChangePass()" class="item">
+          Change Password
+        </ion-item>
+        <ion-item color="light">
+          Others
+        </ion-item>
+        <ion-item (click)="openPolicy()" class="item">
+          Privacy Policy
+        </ion-item>
+        <ion-item (click)="openTerm()">
+          Term & Conditions
+        </ion-item>
+        <ion-item class="danger" (click)="logOut()">
+          Log Out
+        </ion-item>
+      </ion-list>
+    </div>
 </ion-content>

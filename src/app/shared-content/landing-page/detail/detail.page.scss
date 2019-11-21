@@ -10,7 +10,6 @@
         transform: translate(-50%, -50%);;
         top: 44px;
         left: 52px;
-        color: white;   
     }
     .bookmarkIcon{
         width: 31px;
@@ -87,9 +86,9 @@
         }
     }
     .detailCardActive{
-        padding: 0 35px 0 35px;
         @extend .detailCard;
-        height: 85%;
+        padding: 0 35px 0 35px;
+        height: 80%;
         transition: height 0.5s;
         transition-timing-function: cubic-bezier(0, 0, 1, 1);
         .detailContentTitle{
@@ -98,7 +97,7 @@
         .arrow{
             position: absolute;
             width: 70px;
-            height: 35px;
+            height: 50px;
             transform: translate(-50%, -100%);
             left: 50%;
             box-shadow: 0px -1px 10px 0px rgba(0,0,0,0.3);
@@ -119,5 +118,9 @@
             height: 100%;
             width: 100%;
         }
+    }
+
+    agm-map{
+        height: 300px;
     }
 }

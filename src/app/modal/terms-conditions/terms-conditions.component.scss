@@ -1,4 +1,4 @@
-#settings{
+#termModal{
     .title{
         font-size: 20px;
         position: absolute;
@@ -28,17 +28,14 @@
         top: 44px;
         left: 52px;
     }
-    .list{
-        width: 100%;
+    .content{
         position: absolute;
+        height: 60%;
+        max-width: 80%;
         transform: translate(-50%, 0);
         top: 100px;
         left: 50%;
     }
-    .item{
-        color : #4F83EB;
-    }
-    .danger{
-        color: red;
-    }
+    
+
 }

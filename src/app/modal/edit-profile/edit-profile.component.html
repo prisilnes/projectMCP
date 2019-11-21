@@ -1,3 +1,27 @@
-<p>
-  edit-profile works!
-</p>
+<ion-content id="profile">
+    <ion-icon (click)="closeModal()" class="backIcon" name="arrow-round-back" color="dark"></ion-icon>
+  <div class="title">
+      <ion-text>
+        <b>Profile</b>
+      </ion-text>
+    </div>
+  <div class="avatar">
+    <ion-thumbnail></ion-thumbnail>
+  </div>
+  <ion-button class="imageButton" color="light">
+  </ion-button>
+  
+  <div class="personalInfo ion-text-center">
+    <form [formGroup]="editForm">
+      <ion-item class="inputBox">
+          <ion-input placeHolder="John Doe" formControlName="name"  type="text" required></ion-input>
+        </ion-item>
+        <ion-item class="inputBox">
+          <ion-input  placeHolder="john.doe@gmail.com" formControlName="email"  type="text" required></ion-input>
+        </ion-item>
+      </form>
+      <ion-button shape="round" expand="full">
+        Update
+      </ion-button>
+  </div>
+</ion-content>

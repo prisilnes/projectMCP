@@ -1,5 +1,7 @@
+import { ModalController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { TermsConditionsComponent } from 'src/app/modal/terms-conditions/terms-conditions.component';
 @Component({
   selector: 'app-user-register',
   templateUrl: './user-register.page.html',
@@ -7,7 +9,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class UserRegisterPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private modalCtrl: ModalController,
+  ) { }
   registerForm : FormGroup;
   ngOnInit() {
     this.registerForm = new FormGroup({
@@ -37,5 +41,12 @@ export class UserRegisterPage implements OnInit {
       }),
     })
   }
+
+  // openTerm(){
+  //   this.modalCtrl.create({ component: TermsConditionsComponent })
+  //     .then(modal => {
+  //       modal.present();
+  //     });
+  // }
 
 }

@@ -22,8 +22,8 @@
         </ion-row>
         <ion-row>
           <ion-col *ngFor="let card of pantiAsuhan" size="6">
-            <ion-card class="pantiCard ion-text-center" (click)="move()">
-              <ion-card-subtitle class="text">{{card.nama}}</ion-card-subtitle>
+            <ion-card class="pantiCard ion-text-center" (click)="move(card.panti_id)">
+              <ion-card-subtitle class="text">{{card.panti_nama}}</ion-card-subtitle>
             </ion-card>
           </ion-col>
         </ion-row>

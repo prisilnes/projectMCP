@@ -1,24 +1,26 @@
-<ion-content fullscreen id="detailSection">
+<ion-content fullscreen id="detailSection" *ngIf="detailData">
     <ion-icon [routerLink]="['/','explore']" class="backIcon" name="arrow-round-back" color="dark"></ion-icon>
     <ion-icon class="bookmarkIcon" name="bookmark" color="dark"></ion-icon>
     <!-- <div *ngIf="detailClass == 'detailCardActive'"class="upperTitle ion-text-center">
       <h1>Nama Panti</h1>
     </div> -->
-  <div class="upperCard"> 
-  </div>
+    <ion-img class="upperCard" src="detailData[0].gambar_filepath"></ion-img>
   <div class="{{titleClass}} ion-text-center">
-    <h1>Nama Panti</h1>
+    <h1>{{detailData[0].panti_nama}}</h1>
   </div>
   <div class="summary">
 
   </div>
   
-  <div (click)="appear()" class="{{detailClass}} ion-text-center">
-    <div class="arrow">
+  <div  class="{{detailClass}} ion-text-center">
+    <div (click)="appear()" class="arrow">
       <ion-img class="up" src='.\assets\Up.png'></ion-img>
     </div>
     <h1 class="detailContentTitle">Detail Information</h1>
     <div class="detailContent">
+      <agm-map [latitude]="lat" [longitude]="lon">
+          
+      </agm-map>
     </div>
   </div>
 </ion-content>

@@ -1,4 +1,9 @@
+import { ChangePasswordComponent } from './../../../modal/change-password/change-password.component';
+import { ModalController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
+import { PrivacyPoliciesComponent } from 'src/app/modal/privacy-policies/privacy-policies.component';
+import { TermsConditionsComponent } from 'src/app/modal/terms-conditions/terms-conditions.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-settings',
@@ -7,9 +12,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private modalCtrl: ModalController,
+    private route: Router,
+  ) { }
 
   ngOnInit() {
+  }
+
+  openChangePass(){
+    this.modalCtrl.create({ component: ChangePasswordComponent })
+      .then(modal => {
+        modal.present();
+      });
+  }
+
+  openPolicy(){
+    this.modalCtrl.create({ component: PrivacyPoliciesComponent })
+      .then(modal => {
+        modal.present();
+      });
+  }
+
+  openTerm(){
+    this.modalCtrl.create({ component: TermsConditionsComponent })
+      .then(modal => {
+        modal.present();
+      });
+  }
+
+  logOut(){
+    this.route.navigate(['/','login']);
   }
 
 }

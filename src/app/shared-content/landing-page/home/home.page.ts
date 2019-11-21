@@ -1,6 +1,9 @@
 import { dummy } from './../../../model/data';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FetchDataService } from 'src/app/service/fetch-data.service';
+import { Panti } from 'src/app/model/data';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -8,44 +11,32 @@ import { Router } from '@angular/router';
 })
 export class HomePage implements OnInit {
 
-  data: dummy[] = [{
-    nama : 'Panti Asuhan',
-  },
-  {
-    nama : 'Panti Jompo',
-  },
-  {
-    nama : 'Panti Tuna Netra',
-  }];
-
-  pantiAsuhan: dummy[] = [{
-    nama : 'Panti A'
-  },
-  {
-    nama : 'Panti B'
-  },
-  {
-    nama : 'Panti C'
-  },
-  {
-    nama : 'Panti D'
-  },
-  {
-    nama : 'Panti E'
-  },
-  {
-    nama : 'Panti E'
-  },
-  ]
-
+  pantiAsuhan: Panti[];
   constructor(
     private route: Router,
+    private fetchSvc: FetchDataService
   ) { }
+
+  data: dummy[] = [{
+    nama: 'Panti Asuhan'
+  },
+  {
+    nama: 'Panti Jompo'
+  },
+  {
+    nama: 'Panti Tuna Rungu'
+  }
+  ];
 
   ngOnInit() {
   }
+  ionViewWillEnter() {
+    this.fetchSvc.getPanti().subscribe(data => {
+      this.pantiAsuhan = data;
+    })
+  }
 
-  move(){
-    this.route.navigate(['/', 'explore', 'tabs', 'detail']);
+  move(slug){
+    this.route.navigate(['/', 'explore', 'tabs', slug]);
   }
 }
