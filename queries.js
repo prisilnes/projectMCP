@@ -168,12 +168,12 @@ const detail_panti = (request, response) => {
   );
 };
 
-const bookmarked_panti = (request,response) =>{
-  const id = request.params.id;
+const bookmarked_panti = (request, response) => {
+  // const id = request.params.id;
   pool.query(
-    "select panti_id, panti_nama, kontak_panti from tbl_panti where isbookmarked=$1", [id],
-    (error,result) => {
-      if(error){
+    "select panti_id, panti_nama, kontak_panti from tbl_panti where isbookmarked=true",
+    (error, result) => {
+      if (error) {
         throw error;
       }
       response.status(200).json(results.rows);
