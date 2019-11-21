@@ -35,10 +35,8 @@ export class DetailPage implements OnInit {
         this.detailData = data;
         this.tempLat = data[0].location_lat;
         this.tempLon = data[0].location_long;
-        console.log(this.tempLat, this.tempLon);
         this.lat = +this.tempLat;
         this.lon = +this.tempLon;
-        console.log(data);
       })
     })
   }

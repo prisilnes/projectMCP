@@ -16,6 +16,7 @@ export class LoginPagePage implements OnInit {
 
   loginForm : FormGroup;
   userData : User;
+  splashStatus = 0;
   constructor(
     private modalCtrl: ModalController,
     private loginSvc: LoginRegisterService,
@@ -32,7 +33,9 @@ export class LoginPagePage implements OnInit {
         validators: [Validators.required], 
       })
     });
-    this.getStarted();
+    if (this.splashStatus === 0) {
+      this.getStarted();
+    }
   }
 
   signUp(){
@@ -43,6 +46,7 @@ export class LoginPagePage implements OnInit {
   }
 
   getStarted() {
+    this.splashStatus = 1;
     this.modalCtrl.create({ component: GetStartedComponent })
       .then(modal => {
         modal.present();
