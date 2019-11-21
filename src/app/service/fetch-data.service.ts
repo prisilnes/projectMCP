@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable, observable, BehaviorSubject } from 'rxjs';
-import { Panti, DetailPanti } from 'src/app/model/data';
+import { Panti, DetailPanti, Bookmarked } from 'src/app/model/data';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -55,5 +55,16 @@ export class FetchDataService {
     .pipe(
       map(this.extractData)
     );
+  }
+
+  getBookmarked(): Observable<Bookmarked[]> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 
+      })
+    };
+    return this.http.get(this.bookmarkUrl, httpOptions)
+    .pipe(
+      map(this.extractData)
+    )
   }
 }

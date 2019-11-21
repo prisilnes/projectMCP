@@ -50,35 +50,36 @@ export class LoginPagePage implements OnInit {
   }
 
   loginOwner() {
-    this.userData = {
-      email: this.loginForm.value.userName,
-      password: this.loginForm.value.userPassword
-    };
-    this.loginSvc.loginOwner(this.userData).subscribe((data: any) => {
-      localStorage.setItem('userInfo', data);
-      if (data.success === 'true'){
-        this.modalCtrl.create({ component : TurnGpsComponent})
+    this.modalCtrl.create({ component : TurnGpsComponent})
         .then(modal => {
           modal.present();
         })
-      }
-    })
+    // this.userData = {
+    //   email: this.loginForm.value.userName,
+    //   password: this.loginForm.value.userPassword
+    // };
+    // this.loginSvc.loginOwner(this.userData).subscribe((data: any) => {
+    //   localStorage.setItem('userInfo', data);
+    //   if (data.success === 'true'){
+        
+    //   }
+    // })
   }
 
   loginUser(){
-    this.userData = {
-      email: this.loginForm.value.userName,
-      password: this.loginForm.value.userPassword
-    };
-    this.loginSvc.loginUser(this.userData).subscribe((data: any) => {
-      localStorage.setItem('userInfo', data);
-      if (data.success === 'true'){
-        this.modalCtrl.create({ component : TurnGpsComponent})
-        .then(modal => {
-          modal.present();
-        })
-      }
+    this.modalCtrl.create({ component : TurnGpsComponent})
+    .then(modal => {
+      modal.present();
     })
+  //   this.userData = {
+  //     email: this.loginForm.value.userName,
+  //     password: this.loginForm.value.userPassword
+  //   };
+  //   this.loginSvc.loginUser(this.userData).subscribe((data: any) => {
+  //     localStorage.setItem('userInfo', data);
+  //     if (data.success === 'true'){
+  //     }
+  //   })
   }
 }
 

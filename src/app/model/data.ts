@@ -97,6 +97,6 @@ export interface newUser{
 
 export interface Bookmarked{
     panti_id: string;
-    nama_panti: string;
-    kontak_panti;
+    panti_nama: string;
+    kontak_panti: string;
 }

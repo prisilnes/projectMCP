@@ -1,34 +1,22 @@
-<ion-content id="bookmark">
+<ion-content *ngIf="bookMark" id="bookmark">
   <ion-grid>
     <ion-row>
       <ion-col class="title"size="12">
         <ion-text>Bookmark</ion-text>
       </ion-col>
       <ion-col size="10" offset="1">
-        <ion-card class="bookCard">
+        <ion-card (click)="move(data.panti_id)" *ngFor="let data of bookMark" class="bookCard">
           <ion-card-subtitle class="cardtitle">
-            Panti Asuhan
+            {{data.panti_nama}}
           </ion-card-subtitle>
           <ion-card-content class="cardcontent">
             <ion-icon name="call"></ion-icon>
-            <ion-label> +62 21 532145</ion-label>
+            <ion-label> {{data.kontak_panti}}</ion-label>
             <br>
-            <ion-icon name="pin"></ion-icon>
-            <ion-label> Jl. Pahlawan 1 no 3, Jakarta Selatan</ion-label>
+            <!-- <ion-icon name="pin"></ion-icon>
+            <ion-label> {{data.}}</ion-label> -->
           </ion-card-content>
         </ion-card>
-        <ion-card class="bookCard">
-            <ion-card-subtitle class="cardtitle">
-              Panti Asuhan
-            </ion-card-subtitle>
-            <ion-card-content class="cardcontent">
-                <ion-icon name="call" ></ion-icon>
-                <ion-label> +62 21 532145</ion-label>
-                <br>
-                <ion-icon name="pin"></ion-icon>
-                <ion-label> Jl. Pahlawan 1 no 3, Jakarta Selatan</ion-label>
-              </ion-card-content>
-          </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
