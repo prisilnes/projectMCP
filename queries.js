@@ -172,11 +172,28 @@ const bookmarked_panti = (request, response) => {
   // const id = request.params.id;
   pool.query(
     "select panti_id, panti_nama, kontak_panti from tbl_panti where isbookmarked=true",
-    (error, result) => {
+    (error, results) => {
       if (error) {
         throw error;
       }
       response.status(200).json(results.rows);
+    }
+  );
+};
+
+const update_bookmarked = (request, response) => {
+  const id = request.body.id;
+  pool.query(
+    "update tbl_panti set isbookmarked = true where panti_id=$1",
+    [id],
+    (error, results) => {
+      console.log(results.rows);
+      if (error) {
+        throw error;
+      }
+      response.status(200).json({
+        success: true
+      });
     }
   );
 };
@@ -190,7 +207,8 @@ module.exports = {
   new_owner,
   login_owner,
   detail_panti,
-  bookmarked_panti
+  bookmarked_panti,
+  update_bookmarked
 };
 
 //post tapi bodynya banyak
