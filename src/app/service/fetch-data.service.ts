@@ -9,9 +9,12 @@ import { map } from 'rxjs/operators';
 })
 export class FetchDataService {
 
-  allPantiUrl = 'http://localhost:3000/panti/';
-  detailPantilUrl = 'http://localhost:3000/detail_panti/';
-  bookmarkUrl = 'http://localhost:3000/bookmarked_panti';
+  // allPantiUrl = 'http://localhost:3000/panti/';
+  // detailPantilUrl = 'http://localhost:3000/detail_panti/';
+  // bookmarkUrl = 'http://localhost:3000/bookmarked_panti';
+  allPantiUrl = 'https://backend-mobile-tamago.herokuapp.com/panti/';
+  detailPantilUrl = 'https://backend-mobile-tamago.herokuapp.com/detail-panti/';
+  bookmarkUrl = 'https://backend-mobile-tamago.herokuapp.com/bookmarked-panti';
   homePanti = new BehaviorSubject<Panti[]>([]);
   extractData(res) {
     return res;

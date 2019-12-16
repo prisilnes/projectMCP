@@ -6,10 +6,14 @@ import { User } from 'src/app/model/data';
   providedIn: 'root'
 })
 export class LoginRegisterService {
-  urlOwner = "http://localhost:3000/login_owner";
-  urlUser = "http://localhost:3000/login_user";
-  registerUrlOwner = "http://localhost:3000/new_owner";
-  registerUrlUser = "http://localhost:3000/new_user";
+  // urlOwner = "http://localhost:3000/login-owner";
+  // urlUser = "http://localhost:3000/login-user";
+  // registerUrlOwner = "http://localhost:3000/new_owner";
+  // registerUrlUser = "http://localhost:3000/new_user";
+  urlOwner = 'https://backend-mobile-tamago.herokuapp.com/login-owner';
+  urlUser = 'https://backend-mobile-tamago.herokuapp.com/login-user';
+  registerUrlOwner = 'https://backend-mobile-tamago.herokuapp.com/new-owner';
+  registerUrlUser = 'https://backend-mobile-tamago.herokuapp.com/new-user';
   constructor(
     private http: HttpClient,
   ) { }

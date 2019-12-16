@@ -31,8 +31,8 @@ export class HomePage implements OnInit {
   ngOnInit() {
   }
   ionViewWillEnter() {
-    this.fetchSvc.getPanti().subscribe(data => {
-      this.pantiAsuhan = data;
+    this.fetchSvc.getPanti().subscribe(respond => {
+      this.pantiAsuhan = respond;
     })
   }
 
