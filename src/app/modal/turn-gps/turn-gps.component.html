@@ -2,20 +2,26 @@
     <ion-grid class="innerContent">
       <ion-row>
         <ion-col size="12">
-          <ion-text class="welcomeText">Hi,</ion-text>
+          <ion-text class="welcomeText">Halo,</ion-text>
         </ion-col>
         <ion-col size="12">
-          <ion-text class="welcomeText">Welcome to</ion-text>
+          <ion-text class="welcomeText">Selamat Datang</ion-text>
         </ion-col>
         <ion-col size="12">
           <ion-text class="welcomeText">HelpingHands</ion-text>
         </ion-col>
-        <ion-col size="12">
-          <ion-text class="infoText">Please Turn on your Gps for Optimize Location Performance</ion-text>
+        <ion-col size="12" *ngIf="!gpsActive">
+          <ion-text class="infoText">Silahkan Menaktifkan Fitur Lokasi Pada Perangkat Anda Untuk Memaksimalkan Penggunaan Aplikasi Helping Hands</ion-text>
         </ion-col>
-        <ion-col size="12">
-            <ion-button class="gpsButton" expand="block" shape="round" color="primary" (click)="close()" [routerLink]="['/','explore']">Turn On Gps</ion-button>
-          </ion-col>
+        <ion-col size="12" *ngIf="gpsActive">
+          <ion-text class="infoText">Terimakasih Sudah Menaktifkan Fitur Lokasi Pada Perangkat Anda.</ion-text>
+        </ion-col>
+        <ion-col size="12" *ngIf="!gpsActive">
+          <ion-button class="gpsButton" expand="block" shape="round" color="primary">Turn On Gps</ion-button>
+        </ion-col>
+        <ion-col size="12" *ngIf="gpsActive">
+          <ion-button class="gpsButton" expand="block" shape="round" color="primary" (click)="close()">Continue</ion-button>
+        </ion-col>
       </ion-row>
     </ion-grid>
 </ion-content>
