@@ -32,10 +32,9 @@ export class OwnerRegisterPage implements OnInit {
   
 
   @ViewChild('slides', {static: true}) private slides : IonSlides; 
-  
   slideChanged(e: any) {
     this.slides.getActiveIndex().then((index: number) =>{
-        this.currentIndex = (index + 1) *  0.33;
+        this.currentIndex = (index + 1) *  0.34;
       }
     )
   }
@@ -94,13 +93,6 @@ export class OwnerRegisterPage implements OnInit {
     })
   }
 
-
-  slideChange(){
-    this.index = this.slideOptions.getActiveIndex();
-    console.log('Current Index is : ' , this.index)
-
-  }
-
   registerOwner(){
     this.userData = {
       first_name: this.registerForm.value.first_name,
@@ -115,14 +107,6 @@ export class OwnerRegisterPage implements OnInit {
       } 
     })
   }
-  //  nextSlide($event) {
-  //   this.slides.getActiveIndex().then(index => {
-  //     console.log(index);
-  //     console.log('currentIndex:', index);
-	//   this.slides.slideNext();
-  //     // OR this.slides.slideTo(index + 1);
-  //   });
-  // }
 }
 
 
