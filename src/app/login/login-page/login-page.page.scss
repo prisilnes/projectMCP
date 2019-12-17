@@ -10,7 +10,7 @@
         .login-text{
             font-size: 30px;
             color : #4F83EB;
-            font-family: 'JosefinSans-Bold'
+            font-family: 'JosefinSans-Bold';
         }
     }
 
@@ -24,7 +24,7 @@
 
     .googleBtn{
         @extend .loginBtn;
-        color : #ff0000;
+        color : #F05E63;
     }
 
     .rememberMe{

@@ -2,27 +2,53 @@
   <ion-grid class="innerContent">
     <ion-row>
       <ion-col class="ion-text-center" size="12">
-        <span class="ion-text-center title">Apa itu Helping Hands?</span>
-        <ion-img src='.\assets\owner.png'>
-        </ion-img>
-      </ion-col>
-      <ion-col class="ion-text-center titleText"size="12">
-        <h1><b>HELPING HANDS</b></h1>
+        <span class="ion-text-center title">Apa itu Helping Hands?</span>    
       </ion-col>
     </ion-row>
   </ion-grid>
-    <ion-slides class="slider" pager="true" [options]="slideOptions">
-      <ion-slide>
-          <h3>Zaman Sekarang masih banyak sekali teman-teman kita yang kurang beruntung dan tidak memiliki rumah ataupun orang tua.</h3>
-      </ion-slide>
-      <ion-slide>
-          <h3>Kita sebagai orang yang lebih beruntung dibanding mereka sebaiknya mengulurkan tangan dan membantu mereka</h3>
-      </ion-slide>
-      <ion-slide>
-          <h3>Aplikasi Helping Hands Bertujuan untuk membantu para donatur yang ingin berdonasi bertemu dengan Panti yang membutuhkan Donasi</h3>
-      </ion-slide>
-      <ion-slide>
-          <ion-button class="startedBtn" shape="round" color="primary" (click)="close()">Mulai</ion-button>
-      </ion-slide>
+
+  <ion-slides class="slider center font" pager="true" [options]="slideOptions">
+    <ion-slide>
+      <div class="slide-img-padding">
+        <img src='.\assets\donate1.png'/>
+      </div>
+
+      <div>
+        <h2 class="text" [innerHTML]>Selamat Datang di <b>HELPING HANDS</b></h2>
+      </div>
+      
+      <p class="text">Helping Hands merupakan aplikasi yang memetakan informasi berbagai jenis panti sosial yang ada di Indonesia. </p>
+    </ion-slide>
+
+    <ion-slide>
+      <div class="slide-img-padding">
+        <img src='.\assets\donate2.png'/>
+      </div>
+
+      <div>
+        <h2 class="text" [innerHTML]>Kebutuhan yang sesuai</h2>
+      </div>
+      
+      <p class="text">Dengan adanya aplikasi ini, donatur dapat memberikan bantuan berupa donasi materi agar dapat menunjang pengoperasian panti sosial.</p>
+    </ion-slide>
+
+    <ion-slide>
+      <div class="slide-img-padding">
+        <img src='.\assets\PeopleConnect.png'/>
+      </div>
+
+      <div>
+        <h2 class="text" [innerHTML]>Banyak yang tergerak hatinya untuk berbagi, salah satunya kamu</h2>
+        <p class="text">Mari mulai mencari panti sosial yang ingin kamu bantu </p>
+      </div>
+     
+      <div>
+        <ion-button fill="clear" class="startedBtn"  color="primary" (click)="close()">MULAI <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
+      </div>
+      <!-- <ion-button class="startedBtn" shape="round" color="primary" (click)="close()">MULAI</ion-button> -->
+    </ion-slide>
+
     </ion-slides>
 </ion-content>
+
+

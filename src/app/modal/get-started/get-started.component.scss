@@ -1,29 +1,54 @@
-
 #sliderContent{
+
     .innerContent{
-        height: 50%;
+        height:15%;
         .title{
             font-size: 30px;
             align-content: center;
+            margin-top: 40px;
             margin: 15px;
+            width: 30%;
             color : #4F83EB;
             font-family: 'JosefinSans-Regular';
         }
-        .titleText{
-            color : #4F83EB;
-            font-family: 'JosefinSans-Bold';
-        }
     }
+    
     .slider{
-        width: 90%;
-        height: 50%;
-        color: #444444;
+        margin : 5%;
+
+        ion-slide{
+            display: block;
+        }
+
+        .slide-img-padding{
+            padding: 40px;
+        }
+
+        .font{
+            color: #000000;
+            font-family: 'JosefinSans-Regular';
+        }
+
+        .text{
+            color: #B4B4B4;
+            font-family: 'JosefinSans-Regular';
+        }
+
+        .center{
+            margin: auto;
+            position: relative;
+            transform: translate (-50%, -50%);
+        }
+        
+
         .startedBtn{
             width: 100%;
-            border-radius: 50%;
-            box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.3);
+            // border-radius: 50%;
+            // box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.3);
             height: 60px;
+            font-family: 'JosefinSans-Bold';
         }
+
     }
 
 }
