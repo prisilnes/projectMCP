@@ -1,17 +1,19 @@
+import { IonSlides } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { LoginRegisterService } from 'src/app/service/login-register.service';
 import { newOwner } from './../../model/data';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonSlides } from '@ionic/angular';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+
 
 @Component({
   selector: 'app-owner-register',
   templateUrl: './owner-register.page.html',
   styleUrls: ['./owner-register.page.scss'],
 })
-export class OwnerRegisterPage implements OnInit {
+  
 
+export class OwnerRegisterPage implements OnInit {
   slideOptions = {
     initialSlide: 0,
     speed: 500,
@@ -24,7 +26,22 @@ export class OwnerRegisterPage implements OnInit {
     private route : Router
   ) { }
   registerForm: FormGroup
+
+
+  currentIndex: number;
+  
+
+  @ViewChild('slides', {static: true}) private slides : IonSlides; 
+  
+  slideChanged(e: any) {
+    this.slides.getActiveIndex().then((index: number) =>{
+        this.currentIndex = (index + 1) *  0.33;
+      }
+    )
+  }
+
   ngOnInit() {
+    this.currentIndex = 0.33;
     this.registerForm = new FormGroup({
       firstName: new FormControl(null, {
         updateOn: 'change',
@@ -77,6 +94,12 @@ export class OwnerRegisterPage implements OnInit {
     })
   }
 
+
+  slideChange(){
+    this.index = this.slideOptions.getActiveIndex();
+    console.log('Current Index is : ' , this.index)
+
+  }
 
   registerOwner(){
     this.userData = {

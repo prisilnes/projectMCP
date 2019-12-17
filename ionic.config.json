@@ -1,8 +1,5 @@
 {
-  "name": "tamagoApp",
-  "integrations": {
-    "capacitor": {},
-    "cordova": {}
-  },
+  "name": "New Ionic App",
+  "integrations": {},
   "type": "angular"
 }

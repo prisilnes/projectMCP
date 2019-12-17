@@ -8,13 +8,13 @@
           <ion-text class="register-text">Sign Up as Owner</ion-text>
       </ion-col>
       <ion-col size="12">
-        <ion-progress-bar class="progressBar" value="0.3"></ion-progress-bar>
+        <ion-progress-bar class="progressBar" [value]="currentIndex"></ion-progress-bar>
       </ion-col>
     </ion-row>
   </ion-grid>
 
   <form  class="slider" [formGroup]="registerForm">
-  <ion-slides  class="sliderInner" pager="false" [options]="slideOptions">
+  <ion-slides #slides (ionSlideDidChange)="slideChanged($event)" #slideForm class="sliderInner" pager="false" [options]="slideOptions">
     <ion-slide>
       <ion-grid>
         <ion-row>
