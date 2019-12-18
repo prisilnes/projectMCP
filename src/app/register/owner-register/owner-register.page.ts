@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { LoginRegisterService } from 'src/app/service/login-register.service';
 import { newOwner } from './../../model/data';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { CameraOptions } from '@ionic-native/camera/ngx';
+import { Camera , CameraOptions } from '@ionic-native/camera/ngx';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
@@ -28,7 +28,7 @@ export class OwnerRegisterPage implements OnInit {
   photo: SafeResourceUrl;
 
   date : Date;
-
+  captureData: string;
   userData : newOwner;
   constructor(
     private regisSvc: LoginRegisterService,
@@ -39,25 +39,47 @@ export class OwnerRegisterPage implements OnInit {
     private sanitizer: DomSanitizer,
     private imageSvc: EditItemService,
     private toastCtrl: ToastController,
+    private camera : Camera,
   ) { }
   registerForm: FormGroup
 
   async takePhoto() {
-    const { Camera } = Plugins;
-    const result = await Camera.getPhoto({
-      quality: 100,
-      allowEditing: false,
-      source: CameraSource.Camera,
-      resultType: CameraResultType.Base64
-    });
-
-    this.imageSvc.uploadImage(result).then(async photoUrl =>{
-      let toast = await this.toastCtrl.create({
-        message: 'Gambar Telah Tersimpan',
-        duration: 3000
-      });
-      await toast.present();
+    const cameraOptions : CameraOptions = {
+      quality: 50,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      sourceType: this.camera.PictureSourceType.CAMERA
+    }
+    this.camera.getPicture(cameraOptions)
+    .then((captureDataUrl) => {
+      this.captureData = 'data:image/jpeg;base64,'+ captureDataUrl;
+    }, (err) => {
+      console.log(err);
     })
+
+    let storageRef = firebase.storage().ref();
+    const filename = Math.floor(Date.now() / 1000);
+    let imageRef = storageRef.child('image').child('image'+ filename + '.jpg');
+
+    return imageRef.putString(this.captureData, firebase.storage.StringFormat.DATA_URL).then((snapshot) => {
+      this.selectedImage = snapshot.downloadURL;
+    })
+  }
+      // let toast = await this.toastCtrl.create({
+      //       message: 'Gambar Telah Tersimpan' + downloadUrl,
+      //       duration: 3000
+      //     });
+      //     await toast.present();
+      // })
+
+    // this.imageSvc.uploadImage(result.base64String).then(async photoUrl =>{
+    //   let toast = await this.toastCtrl.create({
+    //     message: 'Gambar Telah Tersimpan' + photoUrl,
+    //     duration: 3000
+    //   });
+    //   await toast.present();
+    // })
 
     // this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(result && (result.base64String));
     // var storageRef = firebase.storage().ref();
@@ -73,10 +95,6 @@ export class OwnerRegisterPage implements OnInit {
     //     this.photo = downloadURL;
     //   });
     // });
-
-
-  }
-
   async pickPhoto() {
     const { Camera } = Plugins;
     const result = await Camera.getPhoto({
@@ -210,6 +228,11 @@ export class OwnerRegisterPage implements OnInit {
   }
 }
 
+    // const result = await Camera.getPhoto({
+    //   quality: 75,
+    //   allowEditing: false,
+    //   source: CameraSource.Camera,
+    //   resultType: CameraResultType.DataUrl
 
 
 

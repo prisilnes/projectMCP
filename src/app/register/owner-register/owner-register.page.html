@@ -8,7 +8,7 @@
           <ion-text class="register-text">Sign Up as Owner</ion-text>
       </ion-col>
       <ion-col>
-        <ion-avatar>
+        <ion-avatar *ngIf="selectedImage">
           <img [src]="selectedImage">
         </ion-avatar>
         

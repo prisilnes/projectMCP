@@ -34,8 +34,8 @@ export class EditItemService {
   uploadImage(imageUri){
     return new Promise<any>((resolve, reject) => {
       let storageRef = firebase.storage().ref();
-      let imageRef = storageRef.child('image').child('Tes Gambar');
-        imageRef.putString(imageUri, 'data_url', { contentType: 'image/png' }) 
+      let imageRef = storageRef.child('image' + '.jpg')
+        return imageRef.putString(imageUri, 'data_url', { contentType: 'image/png' }) 
         .then(downloadUrl => {
           resolve(downloadUrl)
         }, err => {
