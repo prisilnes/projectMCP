@@ -1,4 +1,4 @@
-
+@import 'src/sass/styles.scss';
 #ownerRegister{
     .backBtn{
         width: 50px;
@@ -24,10 +24,11 @@
     .register-text{
         padding: 0 0 0 30px;
         font-size: 30px;
-        color : #4F83EB;
+        color : $blue;
         position: relative;
         transform: translate(-50%, -50%);
         top: 100px;
+        font-family: 'JosefinSans-Bold';
     }
     .progressBar{
         transform: translate(-50%, -50%);
@@ -46,6 +47,16 @@
         .sliderInner{
             height: 100%;
         }
+        ion-label{
+            font-size: 20px;
+            font-family: 'JosefinSans-Regular';
+            color : $blue ;
+
+        }
+        ion-input{
+            font-size: 15px;
+            font-family: 'JosefinSans-Regular';
+        }
     }
 
     .uploadSurat{
@@ -54,5 +65,6 @@
         border-radius: 50%;
         box-shadow: 0px 20px 30px 0px rgba(0,0,0,0.3);
         margin: 20px 0 0 0;
+        font-family: 'JosefinSans-Regular';
     }
 }
