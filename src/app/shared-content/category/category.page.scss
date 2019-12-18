@@ -1,4 +1,4 @@
-
+@import 'src/sass/styles.scss';
 #category{
     .title{
         font-size: 20px;
@@ -6,6 +6,7 @@
         transform: translate(-50%, -50%);
         top: 50px;
         left: 50%;
+        font-family: 'JosefinSans-Bold';
     }
     .backBtn{
         width: 50px;
@@ -60,6 +61,7 @@
             border-radius: 50%;
             box-shadow: 0px 20px 30px 0px rgba(0,0,0,0.3);
             margin: 20px 0 0 0;
+            font-family: 'JosefinSans-Regular';
         }
     }
     
