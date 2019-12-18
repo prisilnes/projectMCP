@@ -21,6 +21,7 @@ export class OwnerRegisterPage implements OnInit {
     slideShadows: true
   }
 
+  selectedImage: string;
   photo: any;
 
   userData : newOwner;
@@ -43,7 +44,8 @@ export class OwnerRegisterPage implements OnInit {
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      this.presentAlert(true , imageData )
+      this.presentAlert(true , imageData.webPath)
+      this.selectImage = imageData.webPath;
     },(err) => {
 
     });

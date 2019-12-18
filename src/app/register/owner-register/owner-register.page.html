@@ -43,6 +43,10 @@
                   <ion-col size="12">
                     <ion-button class="uploadSurat" expand="block" shape="round" color="medium" (click)="selectImage()" >Upload KTP</ion-button>
                   </ion-col>
+                  <ion-col>
+                    <ion-img *ngIf="selectedImage" [src]="selectedImage">
+                    </ion-img>
+                  </ion-col>
                 </ion-row>
               </ion-grid>
             </ion-slide>
