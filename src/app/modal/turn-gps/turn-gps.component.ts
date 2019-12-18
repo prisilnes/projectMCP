@@ -22,7 +22,7 @@ export class TurnGpsComponent implements OnInit {
     private route: Router,
   ) { }
 
-  ngOnInit(){ 
+  ngOnInit() { 
     this.checkGps();
   }
 
@@ -33,11 +33,7 @@ export class TurnGpsComponent implements OnInit {
 
   checkGps() { // ngecek GPS udah nyala atau belum
     this.diagnostic.isLocationEnabled().then((isEnabled) => {
-      if(isEnabled){
-        this.gpsActive = true;
-      } else if(!isEnabled){
-        this.gpsActive = false;
-      }
+      this.gpsActive = isEnabled;
     })
     // this.diagnostic.getLocationMode().then(
     //   (state: any) => {
