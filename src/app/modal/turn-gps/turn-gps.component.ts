@@ -1,7 +1,7 @@
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { ModalController, AlertController } from '@ionic/angular';
 import { LocationAccuracy } from '@ionic-native/location-accuracy/ngx';
 import { Diagnostic } from '@ionic-native/diagnostic/ngx';
 
@@ -20,9 +20,11 @@ export class TurnGpsComponent implements OnInit {
     private androidPermission: AndroidPermissions,
     private locationAccuracy: LocationAccuracy,
     private route: Router,
+    private alertController: AlertController,
   ) { }
 
   ngOnInit() {
+    this.gpsActive = true;
     this.checkGps();
   }
 
@@ -34,7 +36,7 @@ export class TurnGpsComponent implements OnInit {
   checkGps() { // ngecek GPS udah nyala atau belum
     this.diagnostic.isGpsLocationEnabled().then((isEnabled) => {
       this.gpsActive = isEnabled;
-      alert(this.gpsActive);
+      this.presentAlert(this.gpsActive)
     })
     // this.diagnostic.isLocationEnabled().then((isEnabled) => {
     //   this.gpsActive = isEnabled;
@@ -96,5 +98,16 @@ export class TurnGpsComponent implements OnInit {
 
   navigate(){
     this.route.navigate(['/','explore'])
+  }
+
+  async presentAlert(status: string) {
+    const alert = await this.alertController.create({
+      header: 'Alert',
+      subHeader: 'Subtitle',
+      message: 'GPS Status :' + status,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 }
