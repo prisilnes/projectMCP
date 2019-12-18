@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -45,48 +44,3 @@ import { HttpClientModule } from '@angular/common/http';
   bootstrap: [AppComponent]
 })
 export class AppModule {}
-=======
-
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy } from '@angular/router';
-
-import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
-import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { LocationAccuracy } from '@ionic-native/location-accuracy/ngx';
-import { Diagnostic } from '@ionic-native/diagnostic/ngx';
-
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { AgmCoreModule } from '@agm/core';
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
-
-
-@NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
-  imports: [
-    BrowserModule, 
-    IonicModule.forRoot(),
-    HttpClientModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    FormsModule
-  ],
-  providers: [
-    StatusBar,
-    SplashScreen,
-    AndroidPermissions,
-    Geolocation,
-    LocationAccuracy,
-    Diagnostic,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
-  ],
-  bootstrap: [AppComponent]
-})
-export class AppModule {}
->>>>>>> 83d118eee7cb7d9f9dfd22e60e32d4673a16793f
