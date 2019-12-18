@@ -1,4 +1,4 @@
-
+@import 'src/sass/styles.scss';
 #settings{
     .title{
         font-size: 20px;
@@ -6,7 +6,8 @@
         transform: translate(-50%, -50%);
         top: 50px;
         left: 50%;
-        color : #4F83EB;
+        color : $blue;
+        font-family: 'JosefinSans-Bold';
     }
     .backBtn{
         width: 50px;
@@ -35,6 +36,7 @@
         transform: translate(-50%, 0);
         top: 100px;
         left: 50%;
+        font-family: 'JosefinSans-Regular';
     }
     .item{
         color : #4F83EB;
