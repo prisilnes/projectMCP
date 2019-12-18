@@ -1,5 +1,5 @@
 import { File } from '@ionic-native/file/ngx';
-import { IonSlides, ActionSheetController, AlertController } from '@ionic/angular';
+import { IonSlides, ActionSheetController, AlertController, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { LoginRegisterService } from 'src/app/service/login-register.service';
 import { newOwner } from './../../model/data';
@@ -8,8 +8,8 @@ import { CameraOptions } from '@ionic-native/camera/ngx';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
-
 import * as firebase from 'firebase';
+import { EditItemService } from 'src/app/service/edit-item.service';
 
 @Component({
   selector: 'app-owner-register',
@@ -18,13 +18,14 @@ import * as firebase from 'firebase';
 })
 
 export class OwnerRegisterPage implements OnInit {
+  
   slideOptions = {
     initialSlide: 0,
     speed: 500,
     slideShadows: true
   }
   selectedImage: SafeResourceUrl;
-  photo: any;
+  photo: SafeResourceUrl;
 
   date : Date;
 
@@ -32,49 +33,14 @@ export class OwnerRegisterPage implements OnInit {
   constructor(
     private regisSvc: LoginRegisterService,
     private route: Router,
-    // private camera: Plugins,
     private file: File,
     private actionSheet: ActionSheetController,
     private alertController: AlertController,
     private sanitizer: DomSanitizer,
+    private imageSvc: EditItemService,
+    private toastCtrl: ToastController,
   ) { }
   registerForm: FormGroup
-
-
-
-  // async takePicture() {
-// const image = await Plugins.Camera.getPhoto({
-// quality: 100,
-// allowEditing: false,
-// resultType: CameraResultType.Base64,
-// source: CameraSource.Camera
-// });
-
-// this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image && (image.base64String));
-
-// // Create a root reference
-// var storageRef = firebase.storage().ref();
-
-// // Create a reference to 'mountains.jpg'
-// let name = this.authSvc.getUser();
-// var date = new Date;
-// var uploadRef = storageRef.child( name + date.getUTCDate() + date.getUTCDay() + date.getUTCMonth() + date.getUTCFullYear() + 
-//   date.getUTCHours() + date.getUTCMinutes() + date.getUTCSeconds() + '.jpg');
-
-// // this.item.imageUrl = image.dataUrl;
-// // console.log(this.item);
-
-// return uploadRef
-// .putString(image.base64String, 'base64', { contentType: 'image/png' })
-// .then(() => {
-//   return uploadRef.getDownloadURL().then(downloadURL => {
-//     console.log(downloadURL);
-//     this.item.imageUrl = downloadURL;
-//     this.photo = downloadURL;
-//     return this.homeService.setImage(downloadURL);
-//   });
-// });
-
 
   async takePhoto() {
     const { Camera } = Plugins;
@@ -82,31 +48,33 @@ export class OwnerRegisterPage implements OnInit {
       quality: 100,
       allowEditing: false,
       source: CameraSource.Camera,
-      resultType: CameraResultType.DataUrl
+      resultType: CameraResultType.Base64
     });
 
-    this.selectedImage = this.sanitizer.bypassSecurityTrustResourceUrl(
-      result && (result.dataUrl),
-      );
-<<<<<<< HEAD
-
-    var storageRef = firebase.storage().ref();
-    var date = new Date;
-    var name = this.registerForm.value.firstName;
-    var uploadRef = storageRef.child( name + date.getUTCDate() + date.getUTCDay() + date.getUTCMonth() + date.getUTCFullYear() + 
-    date.getUTCHours() + date.getUTCMinutes() + date.getUTCSeconds() + '.jpg');
-
-    return uploadRef
-    .putString(result.base64String, 'base64', { contentType: 'image/png' })
-    .then(() => {
-      return uploadRef.getDownloadURL().then(downloadURL => {
-        console.log(downloadURL);
-        this.selectImage = downloadURL;
+    this.imageSvc.uploadImage(result).then(async photoUrl =>{
+      let toast = await this.toastCtrl.create({
+        message: 'Gambar Telah Tersimpan',
+        duration: 3000
       });
-    });
-=======
-    this.presentAlert(true , this.selectImage)
->>>>>>> a50f3d5d0fad77b9039f7d1961b4cc189f95e0f1
+      await toast.present();
+    })
+
+    // this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(result && (result.base64String));
+    // var storageRef = firebase.storage().ref();
+
+    // var uploadRef = storageRef.child( 'cobacoba' + date.getUTCDate() + date.getUTCDay() + date.getUTCMonth() + date.getUTCFullYear() + 
+    // date.getUTCHours() + date.getUTCMinutes() + date.getUTCSeconds() + '.jpg');
+
+    // var uploadRef = storageRef.child('cobacoba' + '.jpg')
+
+    //  return uploadRef.putString(result.base64String, 'base64', { contentType: 'image/png' }).then(() => {
+    //   return uploadRef.getDownloadURL().then(downloadURL => {
+    //     this.selectedImage = downloadURL;
+    //     this.photo = downloadURL;
+    //   });
+    // });
+
+
   }
 
   async pickPhoto() {
@@ -115,15 +83,20 @@ export class OwnerRegisterPage implements OnInit {
       quality: 100,
       allowEditing: false,
       source: CameraSource.Photos,
-      resultType: CameraResultType.DataUrl
+      resultType: CameraResultType.Uri
     });
-
-    this.selectedImage = this.sanitizer.bypassSecurityTrustResourceUrl(
-      result && (result.dataUrl),
-      );
-    this.presentAlert(true , this.selectImage)
+    this.uploadImageToFirebase(result);
   }
 
+  async uploadImageToFirebase(image){
+    this.imageSvc.uploadImage(image).then(async photoUrl =>{
+      const toast = await this.toastCtrl.create({
+        message: 'Image was Updated Successfully' + photoUrl,
+        duration: 3000
+      });
+      await toast.present();
+    })
+  }
 
   async selectImage(){
     const actionSheet = await this.actionSheet.create({
@@ -225,16 +198,11 @@ export class OwnerRegisterPage implements OnInit {
     })
   }
 
-<<<<<<< HEAD
-  async presentAlert(status: boolean, functionName: string) {
+  async presentAlert(functionName: any) {
     const alert = await this.alertController.create({
-=======
-  async presentAlert(status: boolean, functionName: any) {
-    const alert = await this.alertrController.create({
->>>>>>> a50f3d5d0fad77b9039f7d1961b4cc189f95e0f1
       header: 'Alert',
       subHeader: 'Subtitle',
-      message: 'GPS Status :' + functionName + status,
+      message: 'GPS Status :' + functionName,
       buttons: ['OK']
     });
 

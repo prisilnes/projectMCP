@@ -26,8 +26,10 @@
     </div>
     <h1 class="detailContentTitle">Detail Information</h1>
     <div class="detailContent">
-      <agm-map [latitude]="lat" [longitude]="lon" >
-        <agm-marker [latitude]="lat" [longitude]="lon"></agm-marker> 
+      <agm-map [latitude]="destination.lat" [longitude]="destination.lng" >
+        <agm-direction [origin]="origin" [destination]="destination">
+
+        </agm-direction>
       </agm-map>
       <ion-list>
           <ion-item color="light">

@@ -1,5 +1,5 @@
 import { AlertController } from '@ionic/angular';
-import { SetBookmarked } from './../../../model/data';
+import { SetBookmarked, Distance } from './../../../model/data';
 import { EditItemService } from './../../../service/edit-item.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Component, OnInit } from '@angular/core';
@@ -31,9 +31,19 @@ export class DetailPage implements OnInit {
   tempLat: string;
   tempLon: string;
 
+  destination: Distance;
+  origin: Distance;
+
   bookMarkSlug : SetBookmarked;
   ngOnInit() {
+    this.geolocation.getCurrentPosition().then((resp) => {
+      this.origin = {
+        lat : resp.coords.latitude,
+        lng : resp.coords.longitude,
+      }
+    })
   }
+  
   ionViewWillEnter(){
     this.detailClass = 'detailCard';
     this.titleClass = 'titleCard';
@@ -42,10 +52,10 @@ export class DetailPage implements OnInit {
       this.fetchSvc.getDetailPanti(this.slug)
       .subscribe(data => {
         this.detailData = data;
-        this.tempLat = data[0].location_lat;
-        this.tempLon = data[0].location_long;
-        this.lat = +this.tempLat;
-        this.lon = +this.tempLon;
+        this.destination = {
+          lat: + data[0].location_lat,
+          lng : + data[0].location_long,
+        }
       })
     })
   }

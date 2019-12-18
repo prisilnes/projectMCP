@@ -139,3 +139,8 @@ export interface BookmarkData{
     message: string;
     data: BookmarkInner[];
 }
+
+export interface Distance{
+    lat: number;
+    lng: number;
+}
