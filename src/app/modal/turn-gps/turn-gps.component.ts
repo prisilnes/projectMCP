@@ -24,7 +24,7 @@ export class TurnGpsComponent implements OnInit {
 
   ngOnInit(){
     this.gpsActive = true;
-    this.checkGps()
+    this.checkPermission();
   }
 
   close(){
@@ -32,17 +32,59 @@ export class TurnGpsComponent implements OnInit {
     this.navigate();
   }
 
-  checkGps(){
+  checkGps(){ //ngecek GPS udah nyala atau belum
     this.diagnostic.getLocationMode().then(
       (state: any) => {
         if (state == this.diagnostic.locationMode.LOCATION_OFF){
           this.gpsActive = false;
+          this.askTurnOn();
         } else {
           this.gpsActive = true;
         }
       }
     )
   }
+
+  checkPermission(){ //Ngecek kita punya permission ga buat pake GPS
+    this.androidPermission.checkPermission(this.androidPermission.PERMISSION.ACCESS_COARSE_LOCATION).then(
+      result => {
+      if(result.hasPermission){
+        this.checkGps();
+      } else {
+        this.requestGpsPermission();
+      }
+    },
+    )
+  }
+
+  askTurnOn(){ //Minta buat nyalain GPS
+    this.locationAccuracy.request(this.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then(
+      () => {
+        this.gpsActive = true;
+      },
+      error => alert('Error Requestin location permissions' + JSON.stringify(error))
+    );
+  }
+
+  requestGpsPermission() { //Request Permission buat ngepake GPS
+    this.locationAccuracy.canRequest().then((canRequest: boolean) => {
+      if (canRequest) {
+        console.log('Hello');
+      } else {
+        this.androidPermission.requestPermission(this.androidPermission.PERMISSION.ACCESS_COARSE_LOCATION)
+        .then(
+          () => {
+            this.askTurnOn();
+          },
+          error => {
+            alert('requestPermission Error Requesting location Permissions' + error);
+          }
+        )
+      }
+    })
+  }
+
+
 
   navigate(){
     this.route.navigate(['/','explore'])
