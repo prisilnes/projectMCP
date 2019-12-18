@@ -151,3 +151,11 @@ export interface Distance{
     lat: number;
     lng: number;
 }
+
+export interface EditProfile{
+    id_user: string;
+    name: string;
+    email: string;
+    gambar: string;
+    password: string;
+}

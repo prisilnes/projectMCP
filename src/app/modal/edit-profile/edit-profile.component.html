@@ -6,7 +6,9 @@
       </ion-text>
     </div>
   <div class="avatar">
-    <ion-thumbnail></ion-thumbnail>
+    <ion-thumbnail>
+      <img [src]="userData.user_image">
+    </ion-thumbnail>
   </div>
   <ion-button class="imageButton" color="light">
   </ion-button>
@@ -14,13 +16,19 @@
   <div class="personalInfo ion-text-center">
     <form [formGroup]="editForm">
       <ion-item class="inputBox">
-          <ion-input placeHolder="John Doe" formControlName="name"  type="text" required></ion-input>
+          <ion-input placeHolder="First Name" formControlName="firstName"  type="text" required></ion-input>
         </ion-item>
         <ion-item class="inputBox">
-          <ion-input  placeHolder="john.doe@gmail.com" formControlName="email"  type="text" required></ion-input>
+          <ion-input  placeHolder="Last Name" formControlName="lastName"  type="text" required></ion-input>
+        </ion-item>
+        <ion-item class="inputBox">
+          <ion-input  placeHolder="Email" formControlName="email"  type="text" required></ion-input>
+        </ion-item>
+        <ion-item class="inputBox">
+          <ion-input  placeHolder="Password" formControlName="password"  type="text" required></ion-input>
         </ion-item>
       </form>
-      <ion-button shape="round" expand="full">
+      <ion-button shape="round" expand="full" (click)="">
         Update
       </ion-button>
   </div>
