@@ -80,14 +80,15 @@ export class OwnerRegisterPage implements OnInit {
     const { Camera } = Plugins;
     const result = await Camera.getPhoto({
       quality: 100,
-      allowEditing: true,
+      allowEditing: false,
       source: CameraSource.Camera,
-      resultType: CameraResultType.Base64
+      resultType: CameraResultType.DataUrl
     });
 
     this.selectedImage = this.sanitizer.bypassSecurityTrustResourceUrl(
-      result && result.base64String,
+      result && (result.dataUrl),
       );
+<<<<<<< HEAD
 
     var storageRef = firebase.storage().ref();
     var date = new Date;
@@ -103,20 +104,24 @@ export class OwnerRegisterPage implements OnInit {
         this.selectImage = downloadURL;
       });
     });
+=======
+    this.presentAlert(true , this.selectImage)
+>>>>>>> a50f3d5d0fad77b9039f7d1961b4cc189f95e0f1
   }
 
   async pickPhoto() {
     const { Camera } = Plugins;
     const result = await Camera.getPhoto({
       quality: 100,
-      allowEditing: true,
+      allowEditing: false,
       source: CameraSource.Photos,
-      resultType: CameraResultType.Base64
+      resultType: CameraResultType.DataUrl
     });
 
     this.selectedImage = this.sanitizer.bypassSecurityTrustResourceUrl(
-      result && result.base64String,
+      result && (result.dataUrl),
       );
+    this.presentAlert(true , this.selectImage)
   }
 
 
@@ -220,8 +225,13 @@ export class OwnerRegisterPage implements OnInit {
     })
   }
 
+<<<<<<< HEAD
   async presentAlert(status: boolean, functionName: string) {
     const alert = await this.alertController.create({
+=======
+  async presentAlert(status: boolean, functionName: any) {
+    const alert = await this.alertrController.create({
+>>>>>>> a50f3d5d0fad77b9039f7d1961b4cc189f95e0f1
       header: 'Alert',
       subHeader: 'Subtitle',
       message: 'GPS Status :' + functionName + status,
