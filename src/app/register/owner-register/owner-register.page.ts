@@ -58,28 +58,30 @@ export class OwnerRegisterPage implements OnInit {
     const { Camera } = Plugins;
     const result = await Camera.getPhoto({
       quality: 100,
-      allowEditing: true,
+      allowEditing: false,
       source: CameraSource.Camera,
-      resultType: CameraResultType.Base64
+      resultType: CameraResultType.DataUrl
     });
 
     this.selectedImage = this.sanitizer.bypassSecurityTrustResourceUrl(
-      result && result.base64String,
+      result && (result.dataUrl),
       );
+    this.presentAlert(true , this.selectImage)
   }
 
   async pickPhoto() {
     const { Camera } = Plugins;
     const result = await Camera.getPhoto({
       quality: 100,
-      allowEditing: true,
+      allowEditing: false,
       source: CameraSource.Photos,
-      resultType: CameraResultType.Base64
+      resultType: CameraResultType.DataUrl
     });
 
     this.selectedImage = this.sanitizer.bypassSecurityTrustResourceUrl(
-      result && result.base64String,
+      result && (result.dataUrl),
       );
+    this.presentAlert(true , this.selectImage)
   }
 
 
@@ -183,7 +185,7 @@ export class OwnerRegisterPage implements OnInit {
     })
   }
 
-  async presentAlert(status: boolean, functionName: string) {
+  async presentAlert(status: boolean, functionName: any) {
     const alert = await this.alertrController.create({
       header: 'Alert',
       subHeader: 'Subtitle',

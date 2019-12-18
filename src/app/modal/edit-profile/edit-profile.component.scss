@@ -1,4 +1,4 @@
-
+@import 'src/sass/styles.scss';
 #profile{
     .backIcon{
         width: 40px;
@@ -15,7 +15,8 @@
         transform: translate(-50%, -50%);
         top: 50px;
         left: 50%;
-        color : #4F83EB;
+        color : $blue;
+        font-family: 'JosefinSans-Bold';
     }
     .avatar{
         position: absolute;
@@ -51,5 +52,12 @@
             margin: 0 0 15px 0;
             padding: 0 0 0 20px;
         }
+    }
+    ion-text{
+        font-family: 'JosefinSans-Bold';
+    }
+
+    ion-input{
+        font-family: 'JosefinSans-Regular';
     }
 }
