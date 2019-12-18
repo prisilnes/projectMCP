@@ -1,4 +1,4 @@
-
+@import 'src/sass/styles.scss';
 #bookmark{
     .title{
         position: relative;
@@ -6,11 +6,12 @@
         left: 30px;
         background-color: 20;
         font-size: 30px;
-        color : #4F83EB;
+        color : $blue;
+        font-family: 'JosefinSans-Bold';
     }
     .bookCard{
         margin: 25px 0 25px 0;
-        padding: 0 10px 0 10px;
+        // padding: 0 15px 0 15px;
         height: 135px;
     }
     .cardtitle{
@@ -18,9 +19,15 @@
         top: 15px;
         left: 15px;
         font-size : 20px;
-        color : #4F83EB;
+        color : $blue;
+        font-family: 'JosefinSans-Bold';
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow-y: hidden;   
     }
     .cardcontent{
         font-size: 15px;
+        font-family: 'JosefinSans-Regular'; 
     }
 }
