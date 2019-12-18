@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <ion-content id="ownerRegister">
     <ion-button class="backBtn" shape="round" color="none" [routerLink]="['/','login']">
     </ion-button>
@@ -99,3 +100,106 @@
           </ion-slides>
         </form>
 </ion-content>
+=======
+<ion-content id="ownerRegister">
+    <ion-button class="backBtn" shape="round" color="none" [routerLink]="['/','login']">
+    </ion-button>
+    <ion-icon class="backIcon" name="arrow-round-back" color="primary"></ion-icon>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+          <ion-text class="register-text">Sign Up as Owner</ion-text>
+      </ion-col>
+      <ion-col size="12">
+        <ion-progress-bar class="progressBar" type="buffer" [value]="currentIndex"></ion-progress-bar>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <form  class="slider" [formGroup]="registerForm">
+  <ion-slides #slides (ionSlideDidChange)="slideChanged($event)" #slideForm class="sliderInner" pager="false" [options]="slideOptions">
+    <ion-slide>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12">
+                  <ion-item>
+                    <ion-label position="floating" >First Name</ion-label>
+                    <ion-input formControlName="firstName"  type="text" required></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label position="floating">Last Name</ion-label>
+                    <ion-input formControlName="lastName"  type="text" required></ion-input>
+                  </ion-item>
+                  <ion-item>
+                      <ion-label position="floating">Email</ion-label>
+                      <ion-input formControlName="lastName"  type="text" required></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="floating">Password</ion-label>
+                        <ion-input formControlName="password"  type="password" required></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="floating">Confirm Password</ion-label>
+                        <ion-input formControlName="confirmPassword"  type="password" required></ion-input>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col size="12">
+                    <ion-button class="uploadSurat" expand="block" shape="round" color="medium" >Upload KTP</ion-button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-slide>
+            <ion-slide>
+              <ion-grid>
+                <ion-row>
+                  <ion-col size="12">
+                    <ion-item>
+                      <ion-label position="floating">Nama Panti</ion-label>
+                      <ion-input formControlName="namaPanti"  type="text" required></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label position="floating">Alamat Panti</ion-label>
+                      <ion-input formControlName="alamat"  type="text" required></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label position="floating">No Telp</ion-label>
+                      <ion-input formControlName="noTelp"  type="text" required></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label position="floating">Jumlah Penghuni</ion-label>
+                      <ion-input formControlName="jenisPanti"  type="text" required></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label position="floating">Jumlah Penghuni</ion-label>
+                      <ion-input formControlName="jumlahPenghuni"  type="text" required></ion-input>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-slide>
+            <ion-slide>
+              <ion-grid>
+                <ion-row>
+                  <ion-col size="12">
+                    <ion-item>
+                      <ion-label position="floating">Tanda Daftar Yayasan</ion-label>
+                      <ion-input formControlName="firstName"  type="text" required></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label position="floating">Nama Yayasan</ion-label>
+                      <ion-input formControlName="lastName"  type="text" required></ion-input>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col size="12">
+                    <ion-button class="uploadSurat" expand="block" shape="round" color="medium" >Upload Documents</ion-button>
+                  </ion-col>
+                  <ion-col size="12">
+                    <ion-button (click)="registerOwner()"class="uploadSurat" expand="block" shape="round" color="primary" [routerLink]="['/','login']" >Register</ion-button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-slide>
+          </ion-slides>
+        </form>
+</ion-content>
+>>>>>>> 83d118eee7cb7d9f9dfd22e60e32d4673a16793f

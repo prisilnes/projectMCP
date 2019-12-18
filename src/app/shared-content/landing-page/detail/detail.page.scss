@@ -1,4 +1,4 @@
-
+@import 'src/sass/styles.scss';
 #detailSection{
     width: 100%;
     max-height: 100vh;
@@ -60,8 +60,10 @@
         box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.3);
         height: auto;
         padding: 10px;
+        font-family: 'JosefinSans-Regular';
         .text{
             font-size: 24px;
+            font-family: 'JosefinSans-Regular';
         }
     }
     .titleCardActive{
@@ -96,6 +98,7 @@
         transition-timing-function: cubic-bezier(0, 0, 1, 1);
         .detailContentTitle{
             margin: -35px 0 15px 0;
+            font-family: 'JosefinSans-Bold';
         }
         .arrow{
             position: relative;
@@ -119,6 +122,7 @@
         .detailContent{
             height: 0px;
             width: 0px;
+            font-family: 'JosefinSans-Regular';
         }
     }
     .detailCardActive{
@@ -168,5 +172,8 @@
     }
     agm-map{
         height: 300px;
+    }
+    ion-item{
+        font-family: 'JosefinSans-Regular';
     }
 }

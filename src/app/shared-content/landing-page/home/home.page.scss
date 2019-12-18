@@ -1,4 +1,4 @@
-
+@import 'src/sass/styles.scss';
 #landingPage{
     .backBtn{
         width: 50px;
@@ -34,6 +34,7 @@
         color: #4f83eb;
         position: relative;
         top: -5px;
+        font-family: 'JosefinSans-Regular';
     }
     .categoryCard{
         height: 82px;
@@ -46,6 +47,7 @@
             top: 50%;
             left: 50%;
             color: white;
+            font-family: 'JosefinSans-Regular';
         }
     }
 
@@ -73,9 +75,11 @@
             background-color: black;
             background: linear-gradient(to top, black, transparent);
             padding: 25px 0 0 0;
+            font-family: 'JosefinSans-Regular';
         .text{
             font-size: 18px;
             color: white;
+            font-family: 'JosefinSans-Regular';
         }
     }
     }
