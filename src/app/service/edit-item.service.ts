@@ -16,8 +16,8 @@ export class EditItemService {
     return res;
   }
 
-  bookMarkUrl = 'https://backend-mobile-tamago.herokuapp.com/bookmark-panti';
-
+  bookMarkUrl= 'https://backend-mobile-tamago.herokuapp.com/bookmark-panti';
+  bookDeleteUrl= 'https://backend-mobile-tamago.herokuapp.com/delete-bookmark';
 
   setBookmarked(data : SetBookmarked){
     const httpOptions = {
@@ -26,6 +26,17 @@ export class EditItemService {
       })
     };
     return this.http.post(this.bookMarkUrl, data , httpOptions)
+    .pipe(
+      map(this.extractData)
+    )
+  }
+
+  deleteBookmark(data : SetBookmarked){
+    const httpOptions = {
+      headers: new HttpHeaders({
+      })
+    };
+    return this.http.post(this.bookDeleteUrl, data , httpOptions)
     .pipe(
       map(this.extractData)
     )

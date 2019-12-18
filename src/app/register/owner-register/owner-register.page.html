@@ -46,9 +46,6 @@
                         <ion-input formControlName="confirmPassword"  type="password" required></ion-input>
                     </ion-item>
                   </ion-col>
-                  <ion-col size="12">
-                    <ion-button class="uploadSurat" expand="block" shape="round" color="medium" (click)="selectImage()" >Upload KTP</ion-button>
-                  </ion-col>
                 </ion-row>
               </ion-grid>
             </ion-slide>
@@ -62,19 +59,15 @@
                     </ion-item>
                     <ion-item>
                       <ion-label position="floating">Alamat Panti</ion-label>
-                      <ion-input formControlName="alamat"  type="text" required></ion-input>
+                      <ion-input formControlName="alamatOwner"  type="text" required></ion-input>
                     </ion-item>
                     <ion-item>
-                      <ion-label position="floating">No Telp</ion-label>
-                      <ion-input formControlName="noTelp"  type="text" required></ion-input>
+                      <ion-label position="floating">Telp Panti</ion-label>
+                      <ion-input formControlName="telpPanti"  type="text" required></ion-input>
                     </ion-item>
                     <ion-item>
                       <ion-label position="floating">Jenis Panti</ion-label>
                       <ion-input formControlName="kategoriPanti"  type="text" required></ion-input>
-                    </ion-item>
-                    <ion-item>
-                      <ion-label position="floating">Jumlah Penghuni</ion-label>
-                      <ion-input formControlName="namaYayasan"  type="text" required></ion-input>
                     </ion-item>
                   </ion-col>
                 </ion-row>
@@ -84,16 +77,13 @@
               <ion-grid>
                 <ion-row>
                   <ion-col size="12">
-                    <ion-item>
-                      <ion-label position="floating">Nama Yayasan</ion-label>
-                      <ion-input formControlName="lastName"  type="text" required></ion-input>
-                    </ion-item>
+                    <ion-button class="uploadSurat" expand="block" shape="round" color="medium" (click)="selectImage()" >Upload KTP</ion-button>
                   </ion-col>
                   <ion-col size="12">
-                    <ion-button class="uploadSurat" expand="block" shape="round" color="medium" >Upload Documents</ion-button>
+                    <ion-button class="uploadSurat" expand="block" shape="round" color="medium" (click)="selectImage()" >Upload Foto Panti</ion-button>
                   </ion-col>
                   <ion-col size="12">
-                    <ion-button (click)="registerOwner()"class="uploadSurat" expand="block" shape="round" color="primary" [routerLink]="['/','login']" >Register</ion-button>
+                    <ion-button (click)="registerOwnerc()" class="uploadSurat" expand="block" shape="round" color="primary" [routerLink]="['/','login']" >Register</ion-button>
                   </ion-col>
                 </ion-row>
               </ion-grid>

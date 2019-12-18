@@ -18,7 +18,6 @@ import { EditItemService } from 'src/app/service/edit-item.service';
 })
 
 export class OwnerRegisterPage implements OnInit {
-  
   slideOptions = {
     initialSlide: 0,
     speed: 500,
@@ -56,7 +55,7 @@ export class OwnerRegisterPage implements OnInit {
       this.captureData = 'data:image/jpeg;base64,'+ captureDataUrl;
     }, (err) => {
       console.log(err);
-    })
+    });
 
     let storageRef = firebase.storage().ref();
     const filename = Math.floor(Date.now() / 1000);
@@ -64,37 +63,9 @@ export class OwnerRegisterPage implements OnInit {
 
     return imageRef.putString(this.captureData, firebase.storage.StringFormat.DATA_URL).then((snapshot) => {
       this.selectedImage = snapshot.downloadURL;
-    })
+    });
   }
-      // let toast = await this.toastCtrl.create({
-      //       message: 'Gambar Telah Tersimpan' + downloadUrl,
-      //       duration: 3000
-      //     });
-      //     await toast.present();
-      // })
 
-    // this.imageSvc.uploadImage(result.base64String).then(async photoUrl =>{
-    //   let toast = await this.toastCtrl.create({
-    //     message: 'Gambar Telah Tersimpan' + photoUrl,
-    //     duration: 3000
-    //   });
-    //   await toast.present();
-    // })
-
-    // this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(result && (result.base64String));
-    // var storageRef = firebase.storage().ref();
-
-    // var uploadRef = storageRef.child( 'cobacoba' + date.getUTCDate() + date.getUTCDay() + date.getUTCMonth() + date.getUTCFullYear() + 
-    // date.getUTCHours() + date.getUTCMinutes() + date.getUTCSeconds() + '.jpg');
-
-    // var uploadRef = storageRef.child('cobacoba' + '.jpg')
-
-    //  return uploadRef.putString(result.base64String, 'base64', { contentType: 'image/png' }).then(() => {
-    //   return uploadRef.getDownloadURL().then(downloadURL => {
-    //     this.selectedImage = downloadURL;
-    //     this.photo = downloadURL;
-    //   });
-    // });
   async pickPhoto() {
     const { Camera } = Plugins;
     const result = await Camera.getPhoto({
@@ -141,7 +112,6 @@ export class OwnerRegisterPage implements OnInit {
   }
 
   currentIndex: number;
-  
 
   @ViewChild('slides', {static: true}) private slides : IonSlides; 
   slideChanged(e: any) {
@@ -174,15 +144,19 @@ export class OwnerRegisterPage implements OnInit {
         updateOn : 'change',
         validators: [Validators.required],
       }),
+      alamatOwner: new FormControl(null, {
+        updateOn : 'change',
+        validators: [Validators.required],
+      }),
+      telpOwner: new FormControl(null, {
+        updateOn : 'change',
+        validators: [Validators.required],
+      }),
       namaPanti: new FormControl(null, {
         updateOn : 'change',
         validators: [Validators.required],
       }),
-      alamat: new FormControl(null, {
-        updateOn : 'change',
-        validators: [Validators.required],
-      }),
-      noTelp: new FormControl(null, {
+      telpPanti: new FormControl(null, {
         updateOn : 'change',
         validators: [Validators.required],
       }),
@@ -191,10 +165,6 @@ export class OwnerRegisterPage implements OnInit {
         validators: [Validators.required],
       }),
       jumlahPenghuni: new FormControl(null, {
-        updateOn : 'change',
-        validators: [Validators.required],
-      }),
-      namaYayasan: new FormControl(null, {
         updateOn : 'change',
         validators: [Validators.required],
       }),
@@ -207,7 +177,13 @@ export class OwnerRegisterPage implements OnInit {
       last_name: this.registerForm.value.last_name,
       email: this.registerForm.value.email,
       password: this.registerForm.value.password,
-      telepon: this.registerForm.value.noTelp,
+      alamat_owner: this.registerForm.value.alamatOwner,
+      telepon_owner: this.registerForm.value.telpOwner,
+      nama_panti: this.registerForm.value.namaPanti,
+      telepon_panti: this.registerForm.value.telpPanti,
+      jumlah_penghuni: this.registerForm.value.jumlahPenghuni,
+      kategori_panti: this.registerForm.value.kategoriPanti,
+      gambar_filepath : '',
     }
     this.regisSvc.registerUser(this.userData).subscribe((data: any) => {
       if (data.success === true){

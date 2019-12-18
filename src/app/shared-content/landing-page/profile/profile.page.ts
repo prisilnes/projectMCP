@@ -20,6 +20,7 @@ export class ProfilePage implements OnInit {
       user_email: localStorage.getItem('userEmail'),
       user_first_name: localStorage.getItem('userFirstName'),
       user_last_name: localStorage.getItem('userLastName'),
+      user_image: localStorage.getItem('userImage'),
     }
   }
 

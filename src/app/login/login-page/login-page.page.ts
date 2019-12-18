@@ -56,7 +56,6 @@ export class LoginPagePage implements OnInit {
       });
   }
 
-
   login(){
     this.logindata = {
       email : this.loginForm.value.email,
@@ -69,6 +68,7 @@ export class LoginPagePage implements OnInit {
         localStorage.setItem('userFirstName', data.data[0].user_first_name);
         localStorage.setItem('userLastName', data.data[0].user_last_name);
         localStorage.setItem('userEmail', data.data[0].user_email);
+        localStorage.setItem('userImage', data.data[0].user_image);
         this.loginUser();
       }
     },

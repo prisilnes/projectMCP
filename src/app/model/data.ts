@@ -76,7 +76,13 @@ export interface newOwner{
     last_name: string;
     email: string;
     password: string;
-    telepon: string;
+    alamat_owner: string;
+    telepon_owner: string;
+    nama_panti: string;
+    telepon_panti: string;
+    jumlah_penghuni: string;
+    kategori_panti: string;
+    gambar_filepath: string;
 }
 
 export interface newUser{
@@ -124,6 +130,7 @@ export interface User{
     user_first_name: string;
     user_last_name: string;
     user_email: string;
+    user_image: string;
 }
 
 export interface BookmarkInner{
