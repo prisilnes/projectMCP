@@ -8,28 +8,28 @@
           <ion-text class="login-text">Your Account</ion-text>
         </ion-col>
         <ion-col size="12">
-          <form [formGroup]="loginForm">
+          <form [formGroup]="loginForm" >
             <ion-item>
-              <ion-label position="floating">E-mail</ion-label>
-              <ion-input formControlName="email"  type="text" required></ion-input>
+              <ion-label class="label-text" position="floating">E-mail</ion-label>
+              <ion-input class="input-text" formControlName="email" type="text" required></ion-input>
             </ion-item>
             <ion-item>
-              <ion-label position="floating">Password</ion-label>
-              <ion-input formControlName="password"  type="password" required></ion-input>
+              <ion-label class="label-text" position="floating">Password</ion-label>
+              <ion-input formControlName="password" type="password" required></ion-input>
             </ion-item>
           </form>
         </ion-col>
     </ion-row>
     <ion-row>
       <ion-col size="12">
-        <div class="rememberMe">
+        <div class="rememberMe label-text">
           <ion-checkbox color="primary"></ion-checkbox>
           <ion-label class="rememberText"> Remember Me?</ion-label>
         </div>
       </ion-col>
       <ion-col size="12">
-        <ion-button (click)="loginOwner()" class="loginBtn" shape="round" color="primary">Login As Owner</ion-button>
-        <ion-button (click)="loginUser()" class="googleBtn" shape="round" color="light">Login As User</ion-button>
+        <!-- <ion-button (click)="loginOwner()" class="loginBtn login-text" shape="round" color="primary">Login As Owner</ion-button> -->
+        <ion-button (click)="loginUser()" class="loginBtn" shape="round">Login As User</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

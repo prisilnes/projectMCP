@@ -22,7 +22,7 @@ export class TurnGpsComponent implements OnInit {
     private route: Router,
   ) { }
 
-  ngOnInit() {
+  ngOnInit(){
     this.checkPermission();
   }
 

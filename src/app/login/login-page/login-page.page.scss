@@ -1,3 +1,4 @@
+@import 'src/sass/styles.scss';
 
 #loginPage{
     .login-content{
@@ -9,8 +10,18 @@
         transform: translate(-50%, -50%);
         .login-text{
             font-size: 30px;
-            color : #4F83EB;
+            color : $blue;
             font-family: 'JosefinSans-Bold';
+        }
+        .input-text{
+            font-size: 20px;
+            color : $black;
+            font-family: 'JosefinSans-Light';
+        }
+        .label-text{
+            font-size: 15px;
+            color : $lightgrey;
+            font-family: 'JosefinSans-Light';
         }
     }
 
@@ -20,12 +31,15 @@
         border-radius: 50%;
         box-shadow: 0px 20px 30px 0px rgba(0,0,0,0.3);
         margin: 20px 0 0 0;
+        font-family: 'JosefinSans-Regular';
+        font-size : 15px;
+
     }
 
-    .googleBtn{
-        @extend .loginBtn;
-        color : #F05E63;
-    }
+    // .googleBtn{
+    //     @extend .loginBtn;
+    //     color : #F05E63;
+    // }
 
     .rememberMe{
         width: 90%;
@@ -42,5 +56,8 @@
     .create{
         position: relative;
         margin: 45px 0 0 0;
+        font-family: 'JosefinSans-Regular';
+        font-size : 15px;
+
     }
 }
