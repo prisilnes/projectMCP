@@ -1,11 +1,11 @@
-<ion-content *ngIf="bookMark" id="bookmark">
+<ion-content id="bookmark">
   <ion-grid>
     <ion-row>
       <ion-col class="title"size="12">
         <ion-text>Bookmark</ion-text>
       </ion-col>
       <ion-col size="10" offset="1">
-        <ion-card (click)="move(data.panti_id)" *ngFor="let data of bookMark" class="bookCard">
+        <ion-card (click)="move(data.id_panti)" *ngFor="let data of bookMark" class="bookCard">
           <ion-card-subtitle class="cardtitle">
             {{data.panti_nama}}
           </ion-card-subtitle>
@@ -13,8 +13,9 @@
             <ion-icon name="call"></ion-icon>
             <ion-label> {{data.kontak_panti}}</ion-label>
             <br>
-            <!-- <ion-icon name="pin"></ion-icon>
-            <ion-label> {{data.}}</ion-label> -->
+            <ion-icon name="pin"></ion-icon>
+            <ion-label> {{data.location_nama}}</ion-label>
+            <ion-icon name="trash" slot="end"></ion-icon>
           </ion-card-content>
         </ion-card>
       </ion-col>

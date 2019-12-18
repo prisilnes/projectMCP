@@ -16,7 +16,9 @@ export class EditItemService {
     return res;
   }
 
-  bookMarkUrl = 'https://backend-mobile-tamago.herokuapp.com/bookmark-panti'
+  bookMarkUrl = 'https://backend-mobile-tamago.herokuapp.com/bookmark-panti';
+
+
   setBookmarked(data : SetBookmarked){
     const httpOptions = {
       headers: new HttpHeaders({
@@ -27,7 +29,6 @@ export class EditItemService {
     .pipe(
       map(this.extractData)
     )
-
   }
 
 }

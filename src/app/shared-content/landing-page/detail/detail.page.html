@@ -4,7 +4,7 @@
   </ion-button>
   <ion-button class="bookmarkBtn" shape="round" color="none" [routerLink]="['/','explore']">
   </ion-button>
-  <ion-icon class="bookmarkIcon" name="bookmark" color="light"></ion-icon>
+  <ion-icon class="bookmarkIcon" (click)="bookMark(detailData[0].panti_id)" name="bookmark" color="light"></ion-icon>
       <ion-card *ngIf="detailData" class="upperCard">
         <ion-img class="image" [src]="detailData[0].gambar_filepath"></ion-img>
       </ion-card>

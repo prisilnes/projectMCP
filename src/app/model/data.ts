@@ -71,15 +71,6 @@ export interface DetailPanti{
     location_postal_code: string;
 }
 
-export interface response{
-
-}
-
-export interface User{
-    email: string;
-    password: string;
-}
-
 export interface newOwner{
     first_name: string;
     last_name: string;
@@ -121,4 +112,30 @@ export interface MyCoords{
     longitude: number;
     accuracy: string;
     timestamp: Time;
+}
+
+export interface LoginData{
+    email: string;
+    password: string;
+}
+
+export interface User{
+    user_id: number;
+    user_first_name: string;
+    user_last_name: string;
+    user_email: string;
+}
+
+export interface BookmarkInner{
+    id_user: number;
+    id_panti: number;
+    panti_nama: string;
+    kontak_panti: string;
+    location_nama: string;
+}
+
+export interface BookmarkData{
+    code: number;
+    message: string;
+    data: BookmarkInner[];
 }

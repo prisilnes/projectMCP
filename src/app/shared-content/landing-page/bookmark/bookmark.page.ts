@@ -1,7 +1,8 @@
+import { BookmarkInner } from './../../../model/data';
 import { Router } from '@angular/router';
 import { FetchDataService } from 'src/app/service/fetch-data.service';
 import { Component, OnInit } from '@angular/core';
-import { Bookmarked } from 'src/app/model/data';
+import { Bookmarked, BookmarkData } from 'src/app/model/data';
 
 @Component({
   selector: 'app-bookmark',
@@ -10,7 +11,7 @@ import { Bookmarked } from 'src/app/model/data';
 })
 export class BookmarkPage implements OnInit {
 
-  bookMark: Bookmarked[];
+  bookMark: BookmarkInner[];
   constructor(
     private fetchSvc: FetchDataService,
     private route: Router
@@ -19,8 +20,10 @@ export class BookmarkPage implements OnInit {
   ngOnInit() {
   }
   ionViewWillEnter(){
-    this.fetchSvc.getBookmarked().subscribe(data => {
-      this.bookMark = data;
+
+    this.fetchSvc.getBookmarked(localStorage.getItem('userId')).subscribe(data => {
+      console.log(data);
+      this.bookMark = data.data;
     })
   }
 

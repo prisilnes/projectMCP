@@ -1,4 +1,4 @@
-import { SearchResult, SearchSlug } from './../model/data';
+import { SearchResult, SearchSlug, BookmarkData } from './../model/data';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable, observable, BehaviorSubject } from 'rxjs';
@@ -15,7 +15,7 @@ export class FetchDataService {
   // bookmarkUrl = 'http://localhost:3000/bookmarked_panti';
   allPantiUrl = 'https://backend-mobile-tamago.herokuapp.com/panti/';
   detailPantilUrl = 'https://backend-mobile-tamago.herokuapp.com/detail-panti/';
-  bookmarkUrl = 'https://backend-mobile-tamago.herokuapp.com/bookmarked-panti';
+  bookmarkUrl = 'https://backend-mobile-tamago.herokuapp.com/show-bookmark';
   searchUrl = 'https://backend-mobile-tamago.herokuapp.com/search-panti';
   homePanti = new BehaviorSubject<Panti[]>([]);
   extractData(res) {
@@ -25,6 +25,8 @@ export class FetchDataService {
   constructor(
     private http: HttpClient,
   ) { }
+
+
 
   getPanti(): Observable<Panti[]> {
     const httpOptions = {
@@ -62,12 +64,15 @@ export class FetchDataService {
     );
   }
 
-  getBookmarked(): Observable<Bookmarked[]> {
+  getBookmarked(userId: string): Observable<BookmarkData> {
+    const data = {
+      id: + userId,
+    }
     const httpOptions = {
       headers: new HttpHeaders({ 
       })
     };
-    return this.http.get(this.bookmarkUrl, httpOptions)
+    return this.http.post(this.bookmarkUrl, data, httpOptions)
     .pipe(
       map(this.extractData)
     )

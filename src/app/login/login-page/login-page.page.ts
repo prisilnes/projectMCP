@@ -1,10 +1,10 @@
-import { User } from './../../model/data';
+import { User, LoginData } from './../../model/data';
 
 import { TurnGpsComponent } from './../../modal/turn-gps/turn-gps.component';
 import { GetStartedComponent } from 'src/app/modal/get-started/get-started.component';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ModalController } from '@ionic/angular';
+import { ModalController, AlertController } from '@ionic/angular';
 import { SignupOptionComponent } from 'src/app/modal/signup-option/signup-option.component';
 import { LoginRegisterService } from 'src/app/service/login-register.service';  
 @Component({
@@ -14,12 +14,15 @@ import { LoginRegisterService } from 'src/app/service/login-register.service';
 })
 export class LoginPagePage implements OnInit {
 
+  logindata: LoginData
+
   loginForm : FormGroup;
   userData : User;
   splashStatus = 0;
   constructor(
     private modalCtrl: ModalController,
     private loginSvc: LoginRegisterService,
+    private alertController: AlertController,
     ) { }
 
   ngOnInit() {
@@ -53,11 +56,25 @@ export class LoginPagePage implements OnInit {
       });
   }
 
-  loginOwner() {
-    this.modalCtrl.create({ component : TurnGpsComponent})
-        .then(modal => {
-          modal.present();
-        })
+
+  login(){
+    this.logindata = {
+      email : this.loginForm.value.email,
+      password: this.loginForm.value.password,
+    }
+    this.loginSvc.loginUser(this.logindata).subscribe( (data:any) => {
+      console.log(data);
+      if(data.success === true){
+        localStorage.setItem('userId', data.data[0].user_id);
+        localStorage.setItem('userFirstName', data.data[0].user_first_name);
+        localStorage.setItem('userLastName', data.data[0].user_last_name);
+        localStorage.setItem('userEmail', data.data[0].user_email);
+        this.loginUser();
+      }
+    },
+    (err) => {
+      this.presentAlert();
+    })
   }
 
   loginUser(){
@@ -65,6 +82,17 @@ export class LoginPagePage implements OnInit {
     .then(modal => {
       modal.present();
     })
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Login',
+      subHeader: 'Error',
+      message: 'Password / Email yang anda masukkan salah!',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 }
 

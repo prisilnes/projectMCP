@@ -1,3 +1,6 @@
+import { AlertController } from '@ionic/angular';
+import { SetBookmarked } from './../../../model/data';
+import { EditItemService } from './../../../service/edit-item.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Component, OnInit } from '@angular/core';
 import { FetchDataService } from 'src/app/service/fetch-data.service';
@@ -15,7 +18,10 @@ export class DetailPage implements OnInit {
     private fetchSvc: FetchDataService,
     private url: ActivatedRoute,
     private geolocation: Geolocation,
+    private editSvc: EditItemService,
+    private alertController: AlertController,
   ) { }
+
   detailData: DetailPanti;
   slug: string;
   detailClass: string;
@@ -24,8 +30,9 @@ export class DetailPage implements OnInit {
   lon: number;
   tempLat: string;
   tempLon: string;
-  ngOnInit() {
 
+  bookMarkSlug : SetBookmarked;
+  ngOnInit() {
   }
   ionViewWillEnter(){
     this.detailClass = 'detailCard';
@@ -53,10 +60,47 @@ export class DetailPage implements OnInit {
     }
   }
 
+  bookMark(id: string){
+    console.log(id);
+    this.bookMarkSlug = {
+      id_panti: id,
+      id_user: localStorage.getItem('userId'),
+    }
+
+    this.editSvc.setBookmarked(this.bookMarkSlug).subscribe((data: any) => {
+      if(data.code === 200){
+        this.presentSuccessAlert();
+      } else if (data.code === 201){
+        this.presentFailAlert();
+      }
+    })
+  }
+
   getCurrentLocation(){
     this.geolocation.getCurrentPosition().then(
-      
     )
+  }
+
+  async presentSuccessAlert() {
+    const alert = await this.alertController.create({
+      header: 'Bookmark',
+      subHeader: 'Adding Bookmark',
+      message: 'Panti Sudah Disimpan di Halaman Bookmark Anda',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+  async presentFailAlert() {
+    const alert = await this.alertController.create({
+      header: 'Bookmark',
+      subHeader: 'Adding Bookmark',
+      message: 'Panti Sudah Terdaftar Sebelumnya di Halaman Bookmark Anda',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
 }
