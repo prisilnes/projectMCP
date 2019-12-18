@@ -22,16 +22,8 @@ export class TurnGpsComponent implements OnInit {
     private route: Router,
   ) { }
 
-  ngOnInit(){
-    this.diagnostic.getLocationMode().then(
-      (state: any) => {
-        if (state === this.diagnostic.locationMode.LOCATION_OFF) {
-          this.gpsActive = false;
-        } else {
-          this.gpsActive = true;
-        }
-      }
-    )
+  ngOnInit(){ 
+    this.checkGps();
   }
 
   close() {
@@ -40,15 +32,22 @@ export class TurnGpsComponent implements OnInit {
   }
 
   checkGps() { // ngecek GPS udah nyala atau belum
-    this.diagnostic.getLocationMode().then(
-      (state: any) => {
-        if (state === this.diagnostic.locationMode.LOCATION_OFF) {
-          this.gpsActive = false;
-        } else {
-          this.gpsActive = true;
-        }
+    this.diagnostic.isLocationEnabled().then((isEnabled) => {
+      if(isEnabled){
+        this.gpsActive = true;
+      } else if(!isEnabled){
+        this.gpsActive = false;
       }
-    )
+    })
+    // this.diagnostic.getLocationMode().then(
+    //   (state: any) => {
+    //     if (state === this.diagnostic.locationMode.LOCATION_OFF) {
+    //       this.gpsActive = false;
+    //     } else {
+    //       this.gpsActive = true;
+    //     }
+    //   }
+    // )
   }
 
   checkPermission() { // Ngecek kita punya permission ga buat pake GPS
