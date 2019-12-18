@@ -55,5 +55,20 @@
             font-size: 25px;
         }
     }
+
+    .bookCard{
+        margin: 25px 0 25px 0;
+        height: 127px;
+    }
+    .cardtitle{
+        position: relative;
+        top: 15px;
+        left: 15px;
+        font-size : 20px;
+        color : #4F83EB;
+    }
+    .cardcontent{
+        font-size: 15px;
+    }
     
 }

@@ -58,16 +58,6 @@ export class LoginPagePage implements OnInit {
         .then(modal => {
           modal.present();
         })
-    // this.userData = {
-    //   email: this.loginForm.value.userName,
-    //   password: this.loginForm.value.userPassword
-    // };
-    // this.loginSvc.loginOwner(this.userData).subscribe((data: any) => {
-    //   localStorage.setItem('userInfo', data);
-    //   if (data.success === 'true'){
-        
-    //   }
-    // })
   }
 
   loginUser(){
@@ -75,15 +65,6 @@ export class LoginPagePage implements OnInit {
     .then(modal => {
       modal.present();
     })
-  //   this.userData = {
-  //     email: this.loginForm.value.userName,
-  //     password: this.loginForm.value.userPassword
-  //   };
-  //   this.loginSvc.loginUser(this.userData).subscribe((data: any) => {
-  //     localStorage.setItem('userInfo', data);
-  //     if (data.success === 'true'){
-  //     }
-  //   })
   }
 }
 

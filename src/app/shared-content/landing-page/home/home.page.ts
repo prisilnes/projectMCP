@@ -37,6 +37,7 @@ export class HomePage implements OnInit {
   }
 
   cariKategori(slug){
+    this.pantiAsuhan = [];
     this.fetchSvc.getPantiCategory(slug).subscribe(data => {
       this.pantiAsuhan = data;
     })

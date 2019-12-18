@@ -1,7 +1,11 @@
-
+@import 'src/sass/styles.scss';
 #signUpmodal{
     .modalTitle{
         height: 10%;
+        font-family: 'JosefinSans-Bold';
+        color: $blue;
+        font-size: 30px;
+        padding: 15px 0 0 0;
     }
     .pictureCard{
         border-radius: 50px;
@@ -12,12 +16,16 @@
         margin: -50px 0 0 0;
     }
     .modalButton{
+        font-family: 'JosefinSans-Regular';
         position: relative;
         left: 50%;
         top: -40px;
         transform: translate(-50%, 0);
         height: 50px;
-        font-size: 20px;
+        font-size: 15px;
         width: 90%;
+    }
+    .buttonText{
+        padding: 5px 0 0 0;
     }
 }

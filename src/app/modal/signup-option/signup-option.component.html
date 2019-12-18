@@ -1,20 +1,20 @@
 <ion-content fullscreen id="signUpmodal">
   <ion-grid>
     <ion-row>
-      <ion-col class="ion-text-center modalTitle" size="12">
-        <h1>Crate New Account</h1>
+      <ion-col class="ion-text-center modalTitle">
+        <span>Buat Akun Anda</span>
       </ion-col>
       <ion-col size="10" offset="1">
         <ion-card class="pictureCard">
             <ion-img src='assets\owner.png'></ion-img>
         </ion-card>
-        <ion-button [routerLink]="['/','register','owner']" (click)="close()" class="modalButton" shape="round">As Owner</ion-button>
+        <ion-button [routerLink]="['/','register','owner']" (click)="close()" class="modalButton" shape="round"><span class="buttonText">Daftarkan Panti Anda</span></ion-button>
       </ion-col>
       <ion-col size="10" offset="1">
           <ion-card class="lowerCard">
               <ion-img src='assets\user.png'></ion-img>
           </ion-card>
-          <ion-button [routerLink]="['/','register','user']" (click)="close()" class="modalButton" shape="round">As User</ion-button>
+          <ion-button [routerLink]="['/','register','user']" (click)="close()" class="modalButton" shape="round"><span class="buttonText">Memulai Berbagi</span></ion-button>
         </ion-col>
     </ion-row>
   </ion-grid>

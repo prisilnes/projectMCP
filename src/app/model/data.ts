@@ -100,3 +100,18 @@ export interface Bookmarked{
     panti_nama: string;
     kontak_panti: string;
 }
+
+export interface SearchSlug{
+    search: string;
+}
+
+export interface SearchResult{
+    panti_nama: string;
+    kontak_panti: string;
+    location_nama: string;
+}
+
+export interface SetBookmarked{
+    id_user: string;
+    id_panti: string;
+}

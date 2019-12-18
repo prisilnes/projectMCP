@@ -13,9 +13,21 @@
                     <div class="searchIcon">
                         <ion-icon name="search"></ion-icon> 
                     </div>
-                    <div class="searchInput">
-                        <ion-input placeholder="Search Disini" type="text"></ion-input>
-                    </div>
+                    <form class="searchInput" [formGroup]="searchForm">
+                        <ion-input formControlName="searchBox" placeholder="Search Disini" type="text"></ion-input>
+                    </form>
+                    <ion-card *ngFor="let search of data" class="bookCard">
+                    <ion-card-subtitle class="cardtitle">
+                        {{search.panti_nama}}
+                    </ion-card-subtitle>
+                    <ion-card-content class="cardcontent">
+                        <ion-icon name="call"></ion-icon>
+                        <ion-label> {{search.kontak_panti}}</ion-label>
+                        <br>
+                        <ion-icon name="pin"></ion-icon>
+                        <ion-label> {{search.location_nama}}</ion-label>
+                    </ion-card-content>
+                    </ion-card>
             </ion-col>
         </ion-row>
     </ion-grid>

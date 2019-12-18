@@ -1,3 +1,4 @@
+import { SearchResult, SearchSlug } from './../model/data';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable, observable, BehaviorSubject } from 'rxjs';
@@ -15,6 +16,7 @@ export class FetchDataService {
   allPantiUrl = 'https://backend-mobile-tamago.herokuapp.com/panti/';
   detailPantilUrl = 'https://backend-mobile-tamago.herokuapp.com/detail-panti/';
   bookmarkUrl = 'https://backend-mobile-tamago.herokuapp.com/bookmarked-panti';
+  searchUrl = 'https://backend-mobile-tamago.herokuapp.com/search-panti';
   homePanti = new BehaviorSubject<Panti[]>([]);
   extractData(res) {
     return res;
@@ -66,6 +68,18 @@ export class FetchDataService {
       })
     };
     return this.http.get(this.bookmarkUrl, httpOptions)
+    .pipe(
+      map(this.extractData)
+    )
+  }
+
+  searchData(data: SearchSlug): Observable<SearchResult[]> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+
+      })
+    };
+    return this.http.post(this.searchUrl, data , httpOptions)
     .pipe(
       map(this.extractData)
     )
