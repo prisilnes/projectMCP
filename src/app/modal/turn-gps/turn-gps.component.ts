@@ -24,7 +24,6 @@ export class TurnGpsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.gpsActive = true;
     this.checkGps();
   }
 
@@ -34,7 +33,7 @@ export class TurnGpsComponent implements OnInit {
   }
 
   checkGps() { // ngecek GPS udah nyala atau belum
-    this.diagnostic.isGpsLocationEnabled().then((isEnabled) => {
+    this.diagnostic.isGpsLocationAvailable().then((isEnabled) => {
       this.gpsActive = isEnabled;
       this.presentAlert(this.gpsActive)
     })
@@ -100,7 +99,7 @@ export class TurnGpsComponent implements OnInit {
     this.route.navigate(['/','explore'])
   }
 
-  async presentAlert(status: string) {
+  async presentAlert(status: boolean) {
     const alert = await this.alertController.create({
       header: 'Alert',
       subHeader: 'Subtitle',
