@@ -1,4 +1,4 @@
-
+@import 'src/sass/styles.scss';
 #profile{
     .title{
         font-size: 25px;
@@ -6,7 +6,8 @@
         transform: translate(-50%, -50%);
         top: 50px;
         left: 50%;
-        color : #4F83EB;
+        color : $blue;
+        font-family: 'JosefinSans-Bold';
     }
     .avatar{
         position: absolute;
@@ -16,15 +17,17 @@
         border-radius: 50%;
         height: 150px;
         width: 150px;
-        background: linear-gradient(210deg, #4f83eb, #acc8ff);
+        background: linear-gradient(210deg, $blue, $lightblue);
     }
     .personalInfo{
         font-size: 18px;
-        color : #4F83EB;
+        color : $blue;
         position: absolute;
         transform: translate(-50%, -50%);
         top: 50%;
         left: 50%;
+        font-family: 'JosefinSans-Regular';
+    }
     }
     .buttonBox{
         position: absolute;
@@ -32,5 +35,7 @@
         width: 100%;
         top: 60%;
         left: 50%;
+        font-family: 'JosefinSans-Regular';
+    }
     }
 }
