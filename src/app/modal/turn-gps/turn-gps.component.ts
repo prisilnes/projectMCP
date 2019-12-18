@@ -32,11 +32,16 @@ export class TurnGpsComponent implements OnInit {
   }
 
   checkGps() { // ngecek GPS udah nyala atau belum
-    this.diagnostic.isLocationEnabled().then((isEnabled) => {
+    this.diagnostic.isGpsLocationEnabled().then((isEnabled) => {
       this.gpsActive = isEnabled;
-      console.log(this.gpsActive);
       alert(this.gpsActive);
     })
+    // this.diagnostic.isLocationEnabled().then((isEnabled) => {
+    //   this.gpsActive = isEnabled;
+    //   console.log(this.gpsActive);
+    //   alert(this.gpsActive);
+    // })
+    // alert(this.gpsActive);
     // this.diagnostic.getLocationMode().then(
     //   (state: any) => {
     //     if (state === this.diagnostic.locationMode.LOCATION_OFF) {
