@@ -16,11 +16,10 @@
         <ion-col size="12" *ngIf="gpsActive">
           <ion-text class="infoText">Terimakasih Sudah Menaktifkan Fitur Lokasi Pada Perangkat Anda.</ion-text>
         </ion-col>
-        <ion-col size="12">
+        <ion-col size="12" *ngIf="!gpsActive">
           <ion-button class="gpsButton" expand="block" shape="round" color="primary" (click)="askTurnOn()">Turn On Gps</ion-button>
         </ion-col>
-        <ion-col size="12" >
-          <ion-button class="gpsButton" expand="block" shape="round" color="primary" (click)="checkPermission()">Check GPS</ion-button>
+        <ion-col size="12" *ngIf="gpsActive">
           <ion-button class="gpsButton" expand="block" shape="round" color="primary" (click)="close()">Continue</ion-button>
         </ion-col>
       </ion-row>

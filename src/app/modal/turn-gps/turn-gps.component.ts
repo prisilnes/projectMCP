@@ -23,7 +23,7 @@ export class TurnGpsComponent implements OnInit {
   ) { }
 
   ngOnInit(){
-    this.checkPermission();
+    this.checkGps();
   }
 
   close() {
@@ -36,7 +36,6 @@ export class TurnGpsComponent implements OnInit {
       (state: any) => {
         if (state === this.diagnostic.locationMode.LOCATION_OFF){
           this.gpsActive = false;
-          this.askTurnOn();
         } else {
           this.gpsActive = true;
         }
