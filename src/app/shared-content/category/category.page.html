@@ -12,8 +12,20 @@
     <ion-icon class="searchIcon" name="search" color="primary"></ion-icon>
     <ion-grid class="innerContent">
       <ion-row>
-        <ion-col *ngFor="let data of data" size="10" offset="1">
-          <ion-button class="button" expand="block" shape="round" color="primary">{{data.nama}}</ion-button>
+        <ion-col size="10" offset="1">
+          <ion-card class="button" expand="block" shape="round" color="primary"><ion-card-subtitle class="innertext ion-text-center">Panti Asuhan</ion-card-subtitle></ion-card>
+        </ion-col>
+
+        <ion-col size="10" offset="1">
+          <ion-card class="button1" expand="block" shape="round" color="primary"><ion-card-subtitle class="innertext ion-text-center">Panti Jompo</ion-card-subtitle></ion-card>
+        </ion-col>
+
+        <ion-col size="10" offset="1">
+          <ion-card class="button2" expand="block" shape="round" color="primary"><ion-card-subtitle class="innertext ion-text-center">Panti Tunanetra</ion-card-subtitle></ion-card>
+        </ion-col>
+
+        <ion-col size="10" offset="1">
+          <ion-card class="button3" expand="block" shape="round" color="primary"><ion-card-subtitle class="innertext ion-text-center">Panti Tunarungu</ion-card-subtitle></ion-card>
         </ion-col>
       </ion-row>
     </ion-grid>

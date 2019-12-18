@@ -58,10 +58,30 @@
         .button{
             height: 60px;
             width: 100%;
-            border-radius: 50%;
+            border-radius: 25px;
             box-shadow: 0px 20px 30px 0px rgba(0,0,0,0.3);
             margin: 20px 0 0 0;
-            font-family: 'JosefinSans-Regular';
+            background: linear-gradient(210deg, $blue, $lightblue);
+            .innertext{
+                position: relative;
+                transform: translate(-50%,-50%);
+                top: 50%;
+                left: 50%;
+                font-size: 20px;
+                font-family: 'JosefinSans-Regular';
+            }
+        }
+        .button1{
+            @extend .button;
+            background: linear-gradient(210deg, $darkpink, $lightpink);
+        }
+        .button2{
+            @extend .button;
+            background: linear-gradient(210deg, $darkpurple, $lightpurple);
+        }
+        .button3{
+            @extend .button;
+            background: linear-gradient(210deg, $customred, $orange);
         }
     }
     

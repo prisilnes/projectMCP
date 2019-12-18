@@ -12,11 +12,24 @@
           </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col *ngFor="let data of kategori" size="4">
-            <ion-card (click)="cariKategori(data.nama)"class="categoryCard ion-text-center">
-              <ion-card-subtitle class="text">{{data.nama | titlecase}}</ion-card-subtitle>
+          <ion-col size="4">
+            <ion-card (click)="cariKategori(panti-asuhan)"class="categoryCard ion-text-center">
+              <ion-card-subtitle class="text">Panti Asuhan</ion-card-subtitle>
             </ion-card>
           </ion-col>
+
+          <ion-col size="4">
+            <ion-card (click)="cariKategori(panti-jompo)"class="categoryCard1 ion-text-center">
+              <ion-card-subtitle class="text">Panti Jompo</ion-card-subtitle>
+            </ion-card>
+          </ion-col>
+
+          <ion-col size="4">
+            <ion-card (click)="cariKategori(panti-tunarungu)"class="categoryCard2 ion-text-center">
+              <ion-card-subtitle class="text">Panti Tunarungu</ion-card-subtitle>
+            </ion-card>
+          </ion-col>
+
         </ion-row>
         <ion-row>
           <ion-col *ngFor="let card of pantiAsuhan" size="6">

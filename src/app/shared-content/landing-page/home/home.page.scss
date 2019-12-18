@@ -50,6 +50,15 @@
             font-family: 'JosefinSans-Regular';
         }
     }
+    .categoryCard1{
+        @extend .categoryCard;
+        background: linear-gradient(210deg, $orange, $customred);
+    }
+
+    .categoryCard2{
+        @extend .categoryCard;
+        background: linear-gradient(210deg, $darkpink, $lightpink);
+    }
 
     .seealltext{
         font-family: 'JosefinSans-Light';
