@@ -4,8 +4,10 @@ import { Router } from '@angular/router';
 import { LoginRegisterService } from 'src/app/service/login-register.service';
 import { newOwner } from './../../model/data';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { CameraOptions } from '@ionic-native/camera/ngx';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
 
 @Component({
   selector: 'app-owner-register',
@@ -20,37 +22,66 @@ export class OwnerRegisterPage implements OnInit {
     speed: 500,
     slideShadows: true
   }
-
-  selectedImage: string;
+  selectedImage: SafeResourceUrl;
   photo: any;
 
   userData : newOwner;
   constructor(
     private regisSvc: LoginRegisterService,
     private route: Router,
-    private camera: Camera,
+    // private camera: Plugins,
     private file: File,
     private actionSheet: ActionSheetController,
     private alertrController: AlertController,
+    private sanitizer: DomSanitizer,
   ) { }
   registerForm: FormGroup
-  pickImage(sourceType){
-    const options: CameraOptions = {
+  // pickImage(sourceType){
+  //   const options: CameraOptions = {
+  //     quality: 100,
+  //     sourceType: sourceType,
+  //     destinationType: this.camera.DestinationType.FILE_URI,
+  //     encodingType: this.camera.EncodingType.JPEG,
+  //     mediaType: this.camera.MediaType.PICTURE,
+  //   }
+
+  //   this.camera.getPicture(options).then((imageData) => {
+  //     this.presentAlert(true , imageData.webPath)
+  //     this.selectImage = imageData.webPath;
+  //   },(err) => {
+
+  //   });
+
+  // }
+
+  async takePhoto() {
+    const { Camera } = Plugins;
+    const result = await Camera.getPhoto({
       quality: 100,
-      sourceType: sourceType,
-      destinationType: this.camera.DestinationType.FILE_URI,
-      encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE,
-    }
-
-    this.camera.getPicture(options).then((imageData) => {
-      this.presentAlert(true , imageData.webPath)
-      this.selectImage = imageData.webPath;
-    },(err) => {
-
+      allowEditing: true,
+      source: CameraSource.Camera,
+      resultType: CameraResultType.Base64
     });
 
+    this.selectedImage = this.sanitizer.bypassSecurityTrustResourceUrl(
+      result && result.base64String,
+      );
   }
+
+  async pickPhoto() {
+    const { Camera } = Plugins;
+    const result = await Camera.getPhoto({
+      quality: 100,
+      allowEditing: true,
+      source: CameraSource.Photos,
+      resultType: CameraResultType.Base64
+    });
+
+    this.selectedImage = this.sanitizer.bypassSecurityTrustResourceUrl(
+      result && result.base64String,
+      );
+  }
+
 
   async selectImage(){
     const actionSheet = await this.actionSheet.create({
@@ -58,13 +89,13 @@ export class OwnerRegisterPage implements OnInit {
       buttons: [{
         text: 'Load from library',
         handler: () => {
-          this.pickImage(this.camera.PictureSourceType.PHOTOLIBRARY);
+          this.pickPhoto();
         }
       },
       {
-        text: 'User Camera',
+        text: 'Camera',
         handler: () => {
-          this.pickImage(this.camera.PictureSourceType.CAMERA);
+          this.takePhoto();
         }
       },
       {
@@ -122,15 +153,11 @@ export class OwnerRegisterPage implements OnInit {
         updateOn : 'change',
         validators: [Validators.required],
       }),
-      jenisPanti: new FormControl(null, {
+      kategoriPanti: new FormControl(null, {
         updateOn : 'change',
         validators: [Validators.required],
       }),
       jumlahPenghuni: new FormControl(null, {
-        updateOn : 'change',
-        validators: [Validators.required],
-      }),
-      tandaDaftar: new FormControl(null, {
         updateOn : 'change',
         validators: [Validators.required],
       }),
