@@ -1,4 +1,4 @@
-import { NumberValueAccessor } from '@angular/forms';
+import { Time } from '@angular/common';
 
 export interface dummy{
     nama: string;
@@ -114,4 +114,11 @@ export interface SearchResult{
 export interface SetBookmarked{
     id_user: string;
     id_panti: string;
+}
+
+export interface MyCoords{
+    latitude: number;
+    longitude: number;
+    accuracy: string;
+    timestamp: Time;
 }

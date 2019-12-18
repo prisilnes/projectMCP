@@ -1,3 +1,4 @@
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Component, OnInit } from '@angular/core';
 import { FetchDataService } from 'src/app/service/fetch-data.service';
 import { DetailPanti } from 'src/app/model/data';
@@ -13,13 +14,14 @@ export class DetailPage implements OnInit {
   constructor(
     private fetchSvc: FetchDataService,
     private url: ActivatedRoute,
+    private geolocation: Geolocation,
   ) { }
   detailData: DetailPanti;
   slug: string;
   detailClass: string;
   titleClass: string;
-  lat : number;
-  lon : number;
+  lat: number;
+  lon: number;
   tempLat: string;
   tempLon: string;
   ngOnInit() {
@@ -41,14 +43,20 @@ export class DetailPage implements OnInit {
     })
   }
 
-  appear(){
-    if(this.detailClass === 'detailCard'){
+  appear() {
+    if (this.detailClass === 'detailCard'){
       this.detailClass = 'detailCardActive';
       this.titleClass = 'titleCardActive';
     } else {
       this.detailClass = 'detailCard';
       this.titleClass = 'titleCard';
     }
+  }
+
+  getCurrentLocation(){
+    this.geolocation.getCurrentPosition().then(
+      
+    )
   }
 
 }

@@ -16,26 +16,25 @@ export class TurnGpsComponent implements OnInit {
 
   constructor(
     private diagnostic: Diagnostic,
-    private modalCtrl : ModalController,
+    private modalCtrl: ModalController,
     private androidPermission: AndroidPermissions,
     private locationAccuracy: LocationAccuracy,
     private route: Router,
   ) { }
 
-  ngOnInit(){
-    this.gpsActive = true;
+  ngOnInit() {
     this.checkPermission();
   }
 
-  close(){
+  close() {
     this.modalCtrl.dismiss();
     this.navigate();
   }
 
-  checkGps(){ //ngecek GPS udah nyala atau belum
+  checkGps() { // ngecek GPS udah nyala atau belum
     this.diagnostic.getLocationMode().then(
       (state: any) => {
-        if (state == this.diagnostic.locationMode.LOCATION_OFF){
+        if (state === this.diagnostic.locationMode.LOCATION_OFF){
           this.gpsActive = false;
           this.askTurnOn();
         } else {
@@ -45,19 +44,19 @@ export class TurnGpsComponent implements OnInit {
     )
   }
 
-  checkPermission(){ //Ngecek kita punya permission ga buat pake GPS
+  checkPermission() { // Ngecek kita punya permission ga buat pake GPS
     this.androidPermission.checkPermission(this.androidPermission.PERMISSION.ACCESS_COARSE_LOCATION).then(
       result => {
       if(result.hasPermission){
-        this.checkGps();
+        this.checkGps(); // Kalo punya permission bakalan minta buka GPS
       } else {
-        this.requestGpsPermission();
+        this.requestGpsPermission(); // Kalo ga punya permission bakalan minta buka GPS
       }
     },
     )
   }
 
-  askTurnOn(){ //Minta buat nyalain GPS
+  askTurnOn() { // Minta buat nyalain GPS
     this.locationAccuracy.request(this.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then(
       () => {
         this.gpsActive = true;
@@ -66,7 +65,7 @@ export class TurnGpsComponent implements OnInit {
     );
   }
 
-  requestGpsPermission() { //Request Permission buat ngepake GPS
+  requestGpsPermission() { // Request Permission buat ngepake GPS
     this.locationAccuracy.canRequest().then((canRequest: boolean) => {
       if (canRequest) {
         console.log('Hello');
