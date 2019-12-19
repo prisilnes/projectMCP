@@ -2,7 +2,7 @@
   <ion-icon [routerLink]="['/','explore']" class="backIcon" name="arrow-round-back" color="light"></ion-icon>
   <ion-button class="backBtn" shape="round" color="none">
   </ion-button>
-  <ion-button class="bookmarkBtn" shape="round" color="none" [routerLink]="['/','explore']">
+  <ion-button class="bookmarkBtn" shape="round" color="none" (click)="bookMark(detailData[0].panti_id)">
   </ion-button>
   <ion-icon class="bookmarkIcon" (click)="bookMark(detailData[0].panti_id)" name="bookmark" color="light"></ion-icon>
       <ion-card *ngIf="detailData" class="upperCard">
@@ -16,8 +16,10 @@
     <span class="text">{{detailData[0].panti_nama}}</span>
   </div>
   <div class="summary">
-    <h4>Perkenalan Panti :</h4>
-    <h3>{{detailData[0].summary}}</h3>
+    <h4>Alamat</h4>
+    <h3>{{detailData[0].location_nama}}</h3>
+    <h4>Kontak</h4>
+    <h3>{{detailData[0].kontak_panti}}</h3>
   </div>
   
   <div  class="{{detailClass}} ion-text-center">
@@ -39,18 +41,6 @@
               {{detailData[0].location_city}}
           </ion-item>
           <ion-item color="light">
-            Alamat:
-          </ion-item>
-          <ion-item class="item">
-              {{detailData[0].location_nama}}
-          </ion-item>
-          <ion-item color="light">
-            Kontak Panti:
-          </ion-item>
-          <ion-item class="item">
-              {{detailData[0].kontak_panti}}
-          </ion-item>
-          <ion-item color="light">
               Jumlah Penghuni:
             </ion-item>
             <ion-item class="item">
@@ -60,13 +50,13 @@
               Kebutuhan Panti:
             </ion-item>
             <ion-item class="item">
-              Beras
+              -
             </ion-item>
             <ion-item class="item">
-              Pakaian
+              -
             </ion-item>
             <ion-item class="item">
-              Popok
+              -
             </ion-item>
             <ion-item class="item">
               --

@@ -42,6 +42,11 @@ export class SettingsPage implements OnInit {
   }
 
   logOut(){
+    localStorage.removeItem('userId');
+    localStorage.removeItem('userFirstName');
+    localStorage.removeItem('userLastName');
+    localStorage.removeItem('userEmail');
+    localStorage.removeItem('userImage');
     this.route.navigate(['/','login']);
   }
 

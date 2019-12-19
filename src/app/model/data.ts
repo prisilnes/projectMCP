@@ -1,4 +1,5 @@
 import { Time } from '@angular/common';
+import { SafeResourceUrl } from '@angular/platform-browser';
 
 export interface dummy{
     nama: string;
@@ -103,6 +104,7 @@ export interface SearchSlug{
 }
 
 export interface SearchResult{
+    panti_id: string;
     panti_nama: string;
     kontak_panti: string;
     location_nama: string;
@@ -130,7 +132,7 @@ export interface User{
     user_first_name: string;
     user_last_name: string;
     user_email: string;
-    user_image: string;
+    user_image: SafeResourceUrl;
 }
 
 export interface BookmarkInner{

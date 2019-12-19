@@ -1,4 +1,4 @@
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { SetBookmarked, Distance } from './../../../model/data';
 import { EditItemService } from './../../../service/edit-item.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
@@ -20,6 +20,7 @@ export class DetailPage implements OnInit {
     private geolocation: Geolocation,
     private editSvc: EditItemService,
     private alertController: AlertController,
+    private loadCtrl: LoadingController,
   ) { }
 
   detailData: DetailPanti;
@@ -71,18 +72,25 @@ export class DetailPage implements OnInit {
   }
 
   bookMark(id: string){
-    console.log(id);
+    this.loadCtrl.create({
+      keyboardClose : true,
+      message: 'Mendaftarkan Bookmark'
+    })
+    .then(loading => {
+      loading.present();
     this.bookMarkSlug = {
       id_panti: id,
       id_user: localStorage.getItem('userId'),
     }
-
     this.editSvc.setBookmarked(this.bookMarkSlug).subscribe((data: any) => {
       if(data.code === 200){
+        this.loadCtrl.dismiss();
         this.presentSuccessAlert();
       } else if (data.code === 201){
+        this.loadCtrl.dismiss();
         this.presentFailAlert();
       }
+    })
     })
   }
 

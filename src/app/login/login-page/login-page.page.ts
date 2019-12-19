@@ -4,7 +4,7 @@ import { TurnGpsComponent } from './../../modal/turn-gps/turn-gps.component';
 import { GetStartedComponent } from 'src/app/modal/get-started/get-started.component';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ModalController, AlertController } from '@ionic/angular';
+import { ModalController, AlertController, LoadingController } from '@ionic/angular';
 import { SignupOptionComponent } from 'src/app/modal/signup-option/signup-option.component';
 import { LoginRegisterService } from 'src/app/service/login-register.service';  
 @Component({
@@ -23,6 +23,7 @@ export class LoginPagePage implements OnInit {
     private modalCtrl: ModalController,
     private loginSvc: LoginRegisterService,
     private alertController: AlertController,
+    private loadingCtrl: LoadingController,
     ) { }
 
   ngOnInit() {
@@ -57,23 +58,30 @@ export class LoginPagePage implements OnInit {
   }
 
   login(){
-    this.logindata = {
-      email : this.loginForm.value.email,
-      password: this.loginForm.value.password,
-    }
-    this.loginSvc.loginUser(this.logindata).subscribe( (data:any) => {
-      console.log(data);
-      if(data.success === true){
-        localStorage.setItem('userId', data.data[0].user_id);
-        localStorage.setItem('userFirstName', data.data[0].user_first_name);
-        localStorage.setItem('userLastName', data.data[0].user_last_name);
-        localStorage.setItem('userEmail', data.data[0].user_email);
-        localStorage.setItem('userImage', data.data[0].user_image);
-        this.loginUser();
+    this.loadingCtrl.create({
+      keyboardClose: true,
+      message: 'Login in Process'
+    })
+    .then(loading => {
+      loading.present();
+      this.logindata = {
+        email : this.loginForm.value.email,
+        password: this.loginForm.value.password,
       }
-    },
-    (err) => {
-      this.presentAlert();
+      this.loginSvc.loginUser(this.logindata).subscribe( (data:any) => {
+        if(data.success === true){
+          localStorage.setItem('userId', data.data[0].user_id);
+          localStorage.setItem('userFirstName', data.data[0].user_first_name);
+          localStorage.setItem('userLastName', data.data[0].user_last_name);
+          localStorage.setItem('userEmail', data.data[0].user_email);
+          localStorage.setItem('userImage', data.data[0].user_image);
+          loading.dismiss();
+          this.loginUser();
+        }
+      },
+      (err) => {
+        this.presentAlert();
+      })
     })
   }
 

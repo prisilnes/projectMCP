@@ -1,6 +1,6 @@
 {
   "appId": "com.helpinghands.app",
-  "appName": "HelpingHands",
+  "appName": "Helping Hands",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",

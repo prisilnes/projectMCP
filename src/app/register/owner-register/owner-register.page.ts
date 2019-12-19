@@ -1,5 +1,5 @@
 import { File } from '@ionic-native/file/ngx';
-import { IonSlides, ActionSheetController, AlertController, ToastController } from '@ionic/angular';
+import { IonSlides, ActionSheetController, AlertController, ToastController, LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { LoginRegisterService } from 'src/app/service/login-register.service';
 import { newOwner } from './../../model/data';
@@ -39,6 +39,7 @@ export class OwnerRegisterPage implements OnInit {
     private imageSvc: EditItemService,
     private toastCtrl: ToastController,
     private camera : Camera,
+    private loadCtrl: LoadingController,
   ) { }
   registerForm: FormGroup
 
@@ -59,7 +60,7 @@ export class OwnerRegisterPage implements OnInit {
 
     let storageRef = firebase.storage().ref();
     const filename = Math.floor(Date.now() / 1000);
-    let imageRef = storageRef.child('image').child('image'+ filename + '.jpg');
+    let imageRef = storageRef.child('image/'+ filename + '.jpg');
 
     return imageRef.putString(this.captureData, firebase.storage.StringFormat.DATA_URL).then((snapshot) => {
       this.selectedImage = snapshot.downloadURL;
@@ -67,14 +68,33 @@ export class OwnerRegisterPage implements OnInit {
   }
 
   async pickPhoto() {
-    const { Camera } = Plugins;
-    const result = await Camera.getPhoto({
-      quality: 100,
-      allowEditing: false,
-      source: CameraSource.Photos,
-      resultType: CameraResultType.Uri
-    });
-    this.uploadImageToFirebase(result);
+    // const { Camera } = Plugins;
+    // const result = await Camera.getPhoto({
+    //   quality: 100,
+    //   allowEditing: false,
+    //   source: CameraSource.Photos,
+    //   resultType: CameraResultType.Uri
+    // });
+    // this.uploadImageToFirebase(result);
+    const options: CameraOptions = {
+      quality: 50,
+      targetHeight: 600,
+      targetWidth: 600,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      mediaType: this.camera.MediaType.PICTURE,
+      correctOrientation: true
+    }
+
+    const result = await this.camera.getPicture(options)
+
+    const image = `data:image/jpeg;base64,${result}`;
+
+    const pictures = firebase.storage().ref('image/' + 'cobacoba');
+    pictures.putString(image, 'data_url').then(() => {
+      this.presentAlert('Tes Gambar');
+    })
   }
 
   async uploadImageToFirebase(image){
@@ -172,7 +192,13 @@ export class OwnerRegisterPage implements OnInit {
   }
 
   registerOwner(){
-    this.userData = {
+    this.loadCtrl.create({
+      keyboardClose: true,
+      message: 'Sedang Mendaftarkan...'
+    })
+    .then(loading => {
+      loading.present();
+      this.userData = {
       first_name: this.registerForm.value.first_name,
       last_name: this.registerForm.value.last_name,
       email: this.registerForm.value.email,
@@ -187,19 +213,44 @@ export class OwnerRegisterPage implements OnInit {
     }
     this.regisSvc.registerUser(this.userData).subscribe((data: any) => {
       if (data.success === true){
+        this.loadCtrl.dismiss();
+        this.presentAlert('Berhasil')
         this.route.navigate(['/','login']);
       } 
+    }, (err) => {
+      this.loadCtrl.dismiss();
+      this.presentAlert('Gagal')
     })
-  }
+  })
+}
 
-  async presentAlert(functionName: any) {
-    const alert = await this.alertController.create({
-      header: 'Alert',
-      subHeader: 'Subtitle',
-      message: 'GPS Status :' + functionName,
+  // async presentAlert(functionName: any) {
+  //   const alert = await this.alertController.create({
+  //     header: 'Alert',
+  //     subHeader: 'Subtitle',
+  //     message: 'GPS Status :' + functionName,
+  //     buttons: ['OK']
+  //   });
+
+  //   await alert.present();
+  // }
+
+  async presentAlert(status: string){
+    var alert = await this.alertController.create({
+      header: 'Register Status',
+      subHeader: status,
+      message: 'Proses Pendaftaran Akun Anda ' + status,
       buttons: ['OK']
     });
+    await alert.present();
+  }
 
+  async WrongAlert(){
+    var alert = await this.alertController.create({
+      header: 'Password',
+      message: 'Password yang anda buat tidak sama',
+      buttons: ['OK']
+    });
     await alert.present();
   }
 }

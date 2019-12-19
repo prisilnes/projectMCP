@@ -8,6 +8,9 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        .formDiv{
+            margin: 100px 0 0 0;
+        }
         .login-text{
             font-size: 30px;
             color : $blue;

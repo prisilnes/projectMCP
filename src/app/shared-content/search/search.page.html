@@ -16,7 +16,7 @@
                     <form class="searchInput" [formGroup]="searchForm">
                         <ion-input formControlName="searchBox" placeholder="Search Disini" type="text"></ion-input>
                     </form>
-                    <ion-card *ngFor="let search of data" class="bookCard">
+                    <ion-card *ngFor="let search of data" (click)="move(search.panti_id)"class="bookCard">
                     <ion-card-subtitle class="cardtitle">
                         {{search.panti_nama}}
                     </ion-card-subtitle>

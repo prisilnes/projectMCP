@@ -12,7 +12,7 @@
     .bookCard{
         margin: 25px 0 25px 0;
         // padding: 0 15px 0 15px;
-        height: 135px;
+        height: 150px;
     }
     .cardtitle{
         position: relative;
@@ -29,5 +29,14 @@
     .cardcontent{
         font-size: 15px;
         font-family: 'JosefinSans-Regular'; 
+    }
+    .deleteIcon{
+        color: $customred;
+        position: absolute;
+        transform: translate(-50%, 0);
+        left: 90%;
+        top: 70%;
+        width: 30px;
+        height: 30px;
     }
 }

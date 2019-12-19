@@ -5,8 +5,8 @@
         <ion-text>Bookmark</ion-text>
       </ion-col>
       <ion-col size="10" offset="1">
-        <ion-card (click)="move(data.id_panti)" *ngFor="let data of bookMark" class="bookCard">
-          <ion-card-subtitle class="cardtitle">
+        <ion-card  *ngFor="let data of bookMark" class="bookCard">
+          <ion-card-subtitle (click)="move(data.id_panti)" class="cardtitle">
             {{data.panti_nama}}
           </ion-card-subtitle>
           <ion-card-content class="cardcontent">
@@ -16,7 +16,7 @@
             <ion-icon name="pin"></ion-icon>
             <ion-label> {{data.location_nama}}</ion-label>
           </ion-card-content>
-          <ion-icon name="trash" slot="end"></ion-icon>
+          <ion-icon (click)="deleteBookmark(data.id_panti)" name="trash" class="deleteIcon"></ion-icon>
         </ion-card>
       </ion-col>
     </ion-row>

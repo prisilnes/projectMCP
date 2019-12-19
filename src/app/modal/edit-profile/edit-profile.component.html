@@ -5,13 +5,14 @@
         <b>Profile</b>
       </ion-text>
     </div>
-  <div class="avatar">
-    <ion-thumbnail>
+  <div>
+    <ion-avatar class="avatar">
       <img [src]="userData.user_image">
-    </ion-thumbnail>
+    </ion-avatar>
   </div>
-  <ion-button class="imageButton" color="light">
-  </ion-button>
+  <div (click)="selectImage()" class="imageButton">
+    <ion-icon class="cameraIcon" name="camera"></ion-icon>
+  </div>
   
   <div class="personalInfo ion-text-center">
     <form [formGroup]="editForm">
@@ -25,10 +26,10 @@
           <ion-input  placeHolder="Email" formControlName="email"  type="text" required></ion-input>
         </ion-item>
         <ion-item class="inputBox">
-          <ion-input  placeHolder="Password" formControlName="password"  type="text" required></ion-input>
+          <ion-input  placeHolder="Password" formControlName="password"  type="password" required></ion-input>
         </ion-item>
       </form>
-      <ion-button shape="round" expand="full" (click)="">
+      <ion-button shape="round" expand="full" >
         Update
       </ion-button>
   </div>

@@ -25,8 +25,8 @@ export class LoginRegisterService {
     return this.http.post(this.registerUrlOwner, newOwner, {headers: reqHeader});
   }
   
-  registerUser(newOwner : newUser){
+  registerUser(newUser : newUser){
     const reqHeader = new HttpHeaders({});
-    return this.http.post(this.registerUrlUser, newOwner, {headers: reqHeader});
+    return this.http.post(this.registerUrlUser, newUser, {headers: reqHeader});
   }
 }

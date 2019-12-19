@@ -24,7 +24,6 @@ export class TurnGpsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.gpsActive = true;
     this.checkGps();
   }
 
