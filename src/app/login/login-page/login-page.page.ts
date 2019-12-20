@@ -80,6 +80,7 @@ export class LoginPagePage implements OnInit {
         }
       },
       (err) => {
+        loading.dismiss();
         this.presentAlert();
       })
     })
