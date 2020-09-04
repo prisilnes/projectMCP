@@ -43,7 +43,7 @@
     "express": "^4.17.1",
     "firebase": "^7.6.0",
     "ionic-angular": "^3.9.9",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "pg": "^7.15.0",
     "rxjs": "~6.5.1",
     "rxjs-compat": "^6.5.3",
