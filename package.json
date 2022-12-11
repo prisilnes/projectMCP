@@ -40,7 +40,7 @@
     "cordova-plugin-geolocation": "^4.0.2",
     "cordova-plugin-request-location-accuracy": "^2.3.0",
     "core-js": "^2.6.11",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "firebase": "^7.6.0",
     "ionic-angular": "^3.9.9",
     "node-sass": "^4.13.0",
